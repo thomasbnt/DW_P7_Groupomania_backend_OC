@@ -4,11 +4,11 @@
 
 ![Groupomania logo](groupomania.svg)
 
-> Projet n°6 OpenClassrooms Développeur Web. — 19 Juin 2022.
+> Projet n°6 OpenClassrooms Développeur Web. — 24 août 2022.
 
 ## Introduction
 
-Cette partie est spécialement pour le **backend** du projet. Il est sous **ExpressJS** côté  serveur, et sous **MariaDB** côté base de données.
+Cette partie est spécialement pour le **backend** du projet. Il est sous **ExpressJS** côté serveur, et sous **MariaDB** côté base de données.
 Pour le choix de l'ORM, **Prisma** a été choisi.
 
 ## Installation
