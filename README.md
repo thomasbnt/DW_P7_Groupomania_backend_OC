@@ -1,3 +1,4 @@
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/3bd8f19bdd0a4b74a1bb8672e008145f)](https://app.codacy.com/gh/thomasbnt/DW_P7_Groupomania_backend_OC?utm_source=github.com&utm_medium=referral&utm_content=thomasbnt/DW_P7_Groupomania_backend_OC&utm_campaign=Badge_Grade_Settings)
 [![Wakatime](https://wakatime.com/badge/github/thomasbnt/DW_P7_Groupomania_backend_OC.svg?style=for-the-badge)](https://wakatime.com/badge/github/thomasbnt/DW_P7_Groupomania_backend_OC)
 ![Build with MariaDB](https://img.shields.io/badge/Build%20with%20MariaDB-%2300f.svg?&color=800&style=for-the-badge&logo=mongodb&logoColor=white)
 [![build with ExpressJS](https://img.shields.io/badge/Build%20with%20Express-%234752C4.svg?&style=for-the-badge&color=white&logo=express&logoColor=black&alt=express)](https://github.com/expressjs/express)
