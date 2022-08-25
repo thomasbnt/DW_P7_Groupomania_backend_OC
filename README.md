@@ -1,3 +1,4 @@
+![Backend part](https://img.shields.io/badge/This%20repository%20is%20the%20Backend%20part-informational?style=for-the-badge&logo=github)
 [![Wakatime](https://wakatime.com/badge/github/thomasbnt/DW_P7_Groupomania_backend_OC.svg?style=for-the-badge)](https://wakatime.com/badge/github/thomasbnt/DW_P7_Groupomania_backend_OC)
 ![Build with MariaDB](https://img.shields.io/badge/Build%20with%20MariaDB-%2300f.svg?&color=800&style=for-the-badge&logo=mongodb&logoColor=white)
 [![build with ExpressJS](https://img.shields.io/badge/Build%20with%20Express-%234752C4.svg?&style=for-the-badge&color=white&logo=express&logoColor=black&alt=express)](https://github.com/expressjs/express)
@@ -5,7 +6,7 @@
 
 ![Groupomania logo](groupomania.svg)
 
-> Projet n°6 OpenClassrooms Développeur Web. — 24 août 2022.
+> Projet n°7 OpenClassrooms Développeur Web. — 24 août 2022.
 
 ## Introduction
 
@@ -21,8 +22,7 @@ Pour pouvoir exécuter ce projet, veuillez suivre ces étapes.
 3. Copiez le fichier [.env.example](/.env.example) en `.env` et remplacez les valeurs par vos propres.
 4. N'oubliez pas d'avoir un accès à votre base de données MariaDB
 5. Exécutez le script backend, à coup de `npm run serve`. _Port 3000_
-6. Exécutez le script frontend, à coup de `npm run start`. _Port 4200_ (Ou `ng serve`)
-7. Vous pouvez maintenant accéder à l'interface de votre site.
+6Vous pouvez maintenant accéder à l'interface de votre site.
 
 ## Configuration du .env
 Exemple de `.env` :
@@ -37,8 +37,6 @@ Exemple de `.env` :
 
 ## Cahier des charges
 
-- API conforme aux exigences de sécurité
-- Toutes les routes en DEL/POST/PUT pour les sauces et likes sont protégés par Bearer Token.
 
 ## Développement
 
