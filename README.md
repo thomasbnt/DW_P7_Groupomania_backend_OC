@@ -1,7 +1,6 @@
-![Backend part](https://img.shields.io/badge/This%20repository%20is%20the%20Backend%20part-informational?style=for-the-badge&logo=github)
 [![Wakatime](https://wakatime.com/badge/github/thomasbnt/DW_P7_Groupomania_backend_OC.svg?style=for-the-badge)](https://wakatime.com/badge/github/thomasbnt/DW_P7_Groupomania_backend_OC)
-![Build with MariaDB](https://img.shields.io/badge/Build%20with%20MariaDB-%2300f.svg?&color=800&style=for-the-badge&logo=mongodb&logoColor=white)
-[![build with ExpressJS](https://img.shields.io/badge/Build%20with%20Express-%234752C4.svg?&style=for-the-badge&color=white&logo=express&logoColor=black&alt=express)](https://github.com/expressjs/express)
+![Fait avec MariaDB](https://img.shields.io/badge/Fait%20avec%20MariaDB-%2300f.svg?&color=800&style=for-the-badge&logo=mongodb&logoColor=white)
+[![Fait avec ExpressJS](https://img.shields.io/badge/Fait%20avec%20Express-%234752C4.svg?&style=for-the-badge&color=white&logo=express&logoColor=black&alt=express)](https://github.com/expressjs/express)
 [![Codacy Badge](https://img.shields.io/codacy/grade/760b3a894bef4bf0bb4a72b4598c0455?style=for-the-badge)](https://www.codacy.com/gh/thomasbnt/DW_P7_Groupomania_backend_OC/dashboard)
 
 ![Groupomania logo](groupomania.svg)
@@ -13,9 +12,12 @@
 Cette partie est spécialement pour le **backend** du projet. Il est sous **ExpressJS** côté serveur, et sous **MariaDB** côté base de données.
 Pour le choix de l'ORM, **Prisma** a été choisi.
 
-> **INFORMATION**
+> **NOTE**
 > 
 > Si vous souhaitez voir la page **frontend**, veuillez [vous rendre sur ce dépôt GitHub](https://github.com/thomasbnt/DW_P7_Groupomania_frontend_OC).
+> 
+> [![Partie Backend](https://img.shields.io/badge/Aller%20voir%20la%20partie%20Frontend%20→-informational?style=for-the-badge)](https://github.com/thomasbnt/DW_P7_Groupomania_frontend_OC)
+
 
 ## Installation
 
