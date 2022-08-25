@@ -13,6 +13,10 @@
 Cette partie est spécialement pour le **backend** du projet. Il est sous **ExpressJS** côté serveur, et sous **MariaDB** côté base de données.
 Pour le choix de l'ORM, **Prisma** a été choisi.
 
+> **INFORMATION**
+> 
+> Si vous souhaitez voir la page **frontend**, veuillez [vous rendre sur ce dépôt GitHub](https://github.com/thomasbnt/DW_P7_Groupomania_frontend_OC).
+
 ## Installation
 
 Pour pouvoir exécuter ce projet, veuillez suivre ces étapes.
