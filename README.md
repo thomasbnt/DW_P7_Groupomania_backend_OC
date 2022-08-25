@@ -13,6 +13,7 @@ Cette partie est spécialement pour le **backend** du projet. Il est sous **Expr
 Pour le choix de l'ORM, **Prisma** a été choisi.
 
 > **Note**
+> 
 > Si vous souhaitez voir la page **frontend**, veuillez [vous rendre sur ce dépôt GitHub](https://github.com/thomasbnt/DW_P7_Groupomania_frontend_OC).
 > 
 > [![Partie Backend](https://img.shields.io/badge/Aller%20voir%20la%20partie%20Frontend%20→-informational?style=for-the-badge)](https://github.com/thomasbnt/DW_P7_Groupomania_frontend_OC)
