@@ -47,7 +47,7 @@ Exemple de `.env` :
 ## Développement
 
 - Projet réalisé avec **IntelliJ**.
-- Testé avec [Hoppscotch](https://hoppscotch.io). (_Fichier de configuration : [`.hoppscotch.json`](hoppscotch.json)_)
+- Testé avec **Insomnia**
 
 ## Contributions
 
