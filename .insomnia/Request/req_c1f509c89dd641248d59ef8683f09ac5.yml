@@ -1,0 +1,51 @@
+_id: req_c1f509c89dd641248d59ef8683f09ac5
+type: Request
+parentId: fld_9710cdf2903a49fd96ad81ffe889ee37
+modified: 1662047784303
+created: 1662047784303
+url: http://localhost:3000/users/login
+name: Se connecter a son compte
+description: |-
+  Tout les inputs sont nécessaires pour la création du compte.
+
+
+  | field | type | description |
+  | --- | --- | --- |
+  | email | email | Email du compte |
+  | password | string | Mot de passe du compte |
+  | remember_me | boolean | Se souvenir de la connexion |
+
+  ## Données retournés 
+
+  200
+
+  ```json
+  {
+  	"success": "Vous êtes connnecté à votre compte",
+  	"userId": 1234567890123456789
+  }
+  ```
+method: POST
+body:
+  mimeType: application/json
+  text: |-
+    {
+    	"email": "contact@thomasbnt.fr",
+    	"password": "super-strong-password"
+    }
+parameters: []
+headers:
+  - name: Content-Type
+    value: application/json
+    id: pair_45b3ff9d4dc84e24a3e7662e97aa870f
+authentication:
+  type: bearer
+  disabled: true
+metaSortKey: -1662045393014
+isPrivate: false
+settingStoreCookies: true
+settingSendCookies: true
+settingDisableRenderRequestBody: false
+settingEncodeUrl: true
+settingRebuildPath: true
+settingFollowRedirects: global

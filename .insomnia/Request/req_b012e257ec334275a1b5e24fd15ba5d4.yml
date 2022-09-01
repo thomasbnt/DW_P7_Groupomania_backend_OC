@@ -1,0 +1,47 @@
+_id: req_b012e257ec334275a1b5e24fd15ba5d4
+type: Request
+parentId: fld_9710cdf2903a49fd96ad81ffe889ee37
+modified: 1662047784301
+created: 1662047784301
+url: http://localhost:3000/users/signup
+name: Création d'un compte
+description: |-
+  Tout les inputs sont nécessaires pour la création du compte.
+
+  | field | type | description |
+  | --- | --- | --- |
+  | email | email |  |
+  | password | string |  |
+  | firstname | string | Prénom |
+  | lastname | string | Nom |
+  | imageProfile | image | Image de profil de l’utilisateur |
+method: POST
+body:
+  mimeType: multipart/form-data
+  params:
+    - id: pair_96321d382d444ebca21f3bba409f5425
+      name: account
+      value: '{  "email": "contact@thomasbnt.fr",  "password": "password",
+        "firstname": "Thomas", "lastname": "Bnt"}'
+      description: ""
+    - id: pair_12391c59a7d0418a85d17bbe5c37caa8
+      name: imageProfile
+      value: ""
+      description: ""
+      type: file
+parameters: []
+headers:
+  - name: Content-Type
+    value: multipart/form-data
+    id: pair_1c741c619ea64aed8a500bf82606590e
+authentication:
+  type: bearer
+  disabled: true
+metaSortKey: -1662045393064
+isPrivate: false
+settingStoreCookies: true
+settingSendCookies: true
+settingDisableRenderRequestBody: false
+settingEncodeUrl: true
+settingRebuildPath: true
+settingFollowRedirects: global

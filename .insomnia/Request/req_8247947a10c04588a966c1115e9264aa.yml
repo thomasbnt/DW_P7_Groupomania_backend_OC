@@ -1,0 +1,33 @@
+_id: req_8247947a10c04588a966c1115e9264aa
+type: Request
+parentId: fld_9710cdf2903a49fd96ad81ffe889ee37
+modified: 1662047784311
+created: 1662047784311
+url: http://localhost:3000/users/me
+name: Supprimer son compte
+description: |-
+  | field | type | description |
+  | --- | --- | --- |
+  | confirm | boolean | Confirmer la suppression du compte |
+method: DELETE
+body:
+  mimeType: application/json
+  text: |-
+    {
+    	"confirm": true
+    }
+parameters: []
+headers:
+  - name: Content-Type
+    value: application/json
+    id: pair_689316dacf7941bf8db92f48c378bfcc
+authentication:
+  type: bearer
+metaSortKey: -1662045392864
+isPrivate: false
+settingStoreCookies: true
+settingSendCookies: true
+settingDisableRenderRequestBody: false
+settingEncodeUrl: true
+settingRebuildPath: true
+settingFollowRedirects: global

@@ -1,0 +1,61 @@
+_id: req_c91f6226068b46d1bff29cb5e166164b
+type: Request
+parentId: fld_9710cdf2903a49fd96ad81ffe889ee37
+modified: 1662047784307
+created: 1662047784307
+url: http://localhost:3000/users/editSecurity
+name: Modif. mot de passe/email
+description: |-
+  # Modifier le mot de passe
+
+  `JWT_TOKEN` est un token généré par JWT.
+
+  Valider si `newPassword` est bien un mot de passe avec 8 caractères minimum.
+
+
+
+  ## Code 200
+
+  ```json
+  {
+  	"success": "Votre mot de passe est bien modifé"
+  }
+
+  ```
+
+  # Modifier l'email
+
+  Champ `email` obligatoire.
+
+
+  ## Code 200
+
+  ```json
+  {
+  	"success": "Votre adresse e-mail a bien été modifée"
+  }
+
+  ```
+method: PUT
+body:
+  mimeType: application/json
+  text: |-
+    {
+    	"session_token": "JWT_token",
+      "newPassword": "my-super-strong-new-passw0rd"
+    }
+parameters: []
+headers:
+  - name: Content-Type
+    value: application/json
+    id: pair_f48e72f15ee1413b9fa641f5d3714c39
+authentication:
+  type: bearer
+metaSortKey: -1662045392964
+isPrivate: false
+settingStoreCookies: true
+settingSendCookies: true
+settingDisableRenderRequestBody: false
+settingEncodeUrl: true
+settingRebuildPath: true
+settingFollowRedirects: global

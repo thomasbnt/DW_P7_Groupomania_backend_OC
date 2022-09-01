@@ -1,0 +1,22 @@
+_id: req_ee756d0432a244638153ea955fb4fd4c
+type: Request
+parentId: fld_c3f00df1499f49e3a7d1fa46f0eee0bd
+modified: 1662047755424
+created: 1662047755424
+url: http://localhost:3000/posts/:id
+name: Récupérer un post
+description: Récupérer un post via son ID.
+method: GET
+body: {}
+parameters: []
+headers: []
+authentication:
+  type: bearer
+metaSortKey: -1662046078424
+isPrivate: false
+settingStoreCookies: true
+settingSendCookies: true
+settingDisableRenderRequestBody: false
+settingEncodeUrl: true
+settingRebuildPath: true
+settingFollowRedirects: global

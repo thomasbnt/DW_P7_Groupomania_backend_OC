@@ -1,0 +1,22 @@
+_id: req_8335ff6be7ae4052bdee586da7b10cbd
+type: Request
+parentId: fld_c3f00df1499f49e3a7d1fa46f0eee0bd
+modified: 1662047755426
+created: 1662047755426
+url: http://localhost:3000/posts/:id
+name: Supprimer un post
+description: Supprimer un post via son ID.
+method: DELETE
+body: {}
+parameters: []
+headers: []
+authentication:
+  type: bearer
+metaSortKey: -1662046078399
+isPrivate: false
+settingStoreCookies: true
+settingSendCookies: true
+settingDisableRenderRequestBody: false
+settingEncodeUrl: true
+settingRebuildPath: true
+settingFollowRedirects: global

@@ -1,0 +1,37 @@
+_id: req_895f5f2101db4665803fa6b5b317dfd7
+type: Request
+parentId: fld_9710cdf2903a49fd96ad81ffe889ee37
+modified: 1662047784305
+created: 1662047784305
+url: http://localhost:3000/users/me
+name: Propres informations
+description: >-
+  ## Données obtenues
+
+
+  ```json
+
+  {
+  	"accountId": 12345678901234567890,
+  	"email": "contact@thomasbnt.fr",
+  	"firstname": "Thomas", 
+  	"lastname": "Bnt",
+  	"imageProfile": "http://localhost:3000/imagesProfile/12345678901234567890.png",
+  	"createdAt": 1661445600
+  }
+
+  ```
+method: GET
+body: {}
+parameters: []
+headers: []
+authentication:
+  type: bearer
+metaSortKey: -1662045392989
+isPrivate: false
+settingStoreCookies: true
+settingSendCookies: true
+settingDisableRenderRequestBody: false
+settingEncodeUrl: true
+settingRebuildPath: true
+settingFollowRedirects: global
