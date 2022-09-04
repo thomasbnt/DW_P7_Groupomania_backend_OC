@@ -1,31 +1,27 @@
-_id: req_wrk_fb10d999178a47d2b78a2e7f14018c2e6d74493f
+_id: req_wrk_fb10d999178a47d2b78a2e7f14018c2e3abb9491
 type: Request
-parentId: fld_wrk_fb10d999178a47d2b78a2e7f14018c2e12dea96f
-modified: 1662298234714
-created: 1662298234714
-url: "{{ base_url }}/user/{{ username }}"
-name: Updated user
+parentId: fld_wrk_fb10d999178a47d2b78a2e7f14018c2e5b7dcd14
+modified: 1662304109747
+created: 1662304109747
+url: "{{ base_url }}/users/signup"
+name: Créer un nouveau compte
 description: ""
-method: PUT
+method: POST
 body:
   mimeType: application/json
   text: |-
     {
-      "id": 0,
-      "username": "string",
       "firstName": "string",
       "lastName": "string",
       "email": "string",
-      "password": "string",
-      "phone": "string",
-      "userStatus": 0
+      "imageProfile": "string"
     }
 parameters: []
 headers:
   - name: Content-Type
     value: application/json
 authentication: {}
-metaSortKey: -1662298234714
+metaSortKey: -1662304109747
 isPrivate: false
 settingStoreCookies: true
 settingSendCookies: true
