@@ -1,8 +1,132 @@
 _id: spc_81427024916441f4b3aeef2da642bb29
 type: ApiSpec
 parentId: wrk_fb10d999178a47d2b78a2e7f14018c2e
-modified: 1662047546073
+modified: 1662304072204
 created: 1662047421048
-fileName: insomnia.yaml
-contents: ""
+fileName: OCDWP7OpenAPI.yaml
+contents: >-
+  openapi: 3.0.0
+
+  info:
+    description: "Projet n°7 OpenClassrooms Développeur Web. — Partie Backend."
+    version: 1.0.0
+    title: DW OC P7 Groupomania
+    license:
+      name: GNU Affero General Public License v3.0
+      url: https://github.com/thomasbnt/DW_P7_Groupomania_backend_OC/blob/main/LICENSE
+  servers: 
+    - url: http://localhost:3000
+  tags:
+    - name: users
+      description: "A propos d'un utilisateur"
+  paths:
+    /users/signup:
+      post:
+        tags:
+          - users
+        summary: "Créer un nouveau compte"
+        operationId: signupUser
+        requestBody:
+          description: Update an existent pet in the store
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NewUser'
+        responses:
+          "200":
+            description: successful operation
+            content:
+              application/json:
+                schema:
+                  type: string
+        
+    /users/login:
+      post:
+        tags:
+          - users
+        summary: "Se connecter à son compte"
+        operationId: loginUser
+        parameters:
+          - name: email
+            in: query
+            description: "L'email du compte"
+            required: true
+            schema:
+              type: string
+          - name: password
+            in: query
+            description: "Le mot de passe du compte"
+            required: true
+            schema:
+              type: string
+        responses:
+          "200":
+            description: successful operation
+            content:
+              application/json:
+                schema:
+                  type: string
+          "400":
+            description: "Invalid username/password supplied"
+    "/users/me":
+      get:
+        tags:
+          - users
+        summary: Obtenir ses informations de profil public
+        responses:
+          "200":
+            description: successful operation
+            content:
+              application/json:
+                schema:
+                  $ref: "#/components/schemas/NewUser"
+          "400":
+            description: Invalid username supplied
+          "404":
+            description: User not found
+      put:
+        tags:
+          - users
+        summary: "Editer les informations du compte connecté"
+        responses:
+          "400":
+            description: Invalid user supplied
+          "404":
+            description: User not found
+      delete:
+        tags:
+          - users
+        summary: "Supprimer son compte"
+        operationId: deleteUser
+        responses:
+          "400":
+            description: Invalid username supplied
+          "404":
+            description: User not found
+  components:
+    requestBodies:
+      UserArray:
+        content:
+          multipart/form-data:
+            schema:
+              type: array
+        description: List of user object
+        required: true
+    schemas:
+      NewUser:
+        type: object
+        properties:
+          firstName:
+            type: string
+            description: "Prénom"
+          lastName:
+            type: string
+            description: "Nom"
+          email:
+            type: string
+            description: "Email"
+          imageProfile:
+            type: string
+            format: int32
+            description: "Image de profil"
 contentType: yaml

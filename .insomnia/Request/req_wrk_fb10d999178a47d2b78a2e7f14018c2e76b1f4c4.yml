@@ -1,0 +1,21 @@
+_id: req_wrk_fb10d999178a47d2b78a2e7f14018c2e76b1f4c4
+type: Request
+parentId: fld_wrk_fb10d999178a47d2b78a2e7f14018c2e5b7dcd14
+modified: 1662303282703
+created: 1662303282703
+url: "{{ base_url }}/users/me"
+name: Editer les informations du compte connecté
+description: ""
+method: PUT
+body: {}
+parameters: []
+headers: []
+authentication: {}
+metaSortKey: -1662303282703
+isPrivate: false
+settingStoreCookies: true
+settingSendCookies: true
+settingDisableRenderRequestBody: false
+settingEncodeUrl: true
+settingRebuildPath: true
+settingFollowRedirects: global
