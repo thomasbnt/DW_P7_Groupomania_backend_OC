@@ -1,7 +1,7 @@
 _id: spc_81427024916441f4b3aeef2da642bb29
 type: ApiSpec
 parentId: wrk_fb10d999178a47d2b78a2e7f14018c2e
-modified: 1662397182471
+modified: 1662408754381
 created: 1662047421048
 fileName: OCDWP7OpenAPI.yaml
 contents: >-
@@ -55,8 +55,7 @@ contents: >-
             content:
               application/json:
                 schema:
-                    type: string
-        
+                    type: string    
     /users/login:
       post:
         tags:
@@ -85,7 +84,7 @@ contents: >-
                   type: string
           "400":
             description: "Invalid username/password supplied"
-    "/users/me":
+    /users/me:
       get:
         tags:
           - users
@@ -96,7 +95,7 @@ contents: >-
             content:
               application/json:
                 schema:
-                  $ref: "#/components/schemas/NewUser"
+                  $ref: "#/components/schemas/GetUser"
           "400":
             description: Invalid username supplied
           "404":
@@ -105,6 +104,25 @@ contents: >-
         tags:
           - users
         summary: "Editer les informations du compte connecté"
+        requestBody:
+          content:
+            multipart/form-data:
+              schema:
+                type: object
+                properties:
+                  account:
+                    type: object
+                    properties:
+                      firstName:
+                        type: string
+                      lastName:
+                        type: string
+                  profileImage:
+                    type: string
+                    format: base64
+              encoding:
+                imageProfile:
+                  contentType: image/png, image/jpeg
         responses:
           "400":
             description: Invalid user supplied
@@ -116,10 +134,82 @@ contents: >-
         summary: "Supprimer son compte"
         operationId: deleteUser
         responses:
-          "400":
-            description: Invalid username supplied
+          "200": 
+            description: "Votre compte a bien été supprimé"
           "404":
-            description: User not found
+            description: "Utilisateur non trouvé"
+    /users/security:
+      post:
+        tags:
+          - users
+        summary: "Modifier son mot de passe et/ou son adresse email"
+        operationId: securityUser
+        requestBody:
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  account:
+                    type: object
+                    properties:
+                      newEmail:
+                        type: string
+                      newPassword:
+                        type: string
+              encoding:
+                imageProfile:
+                  contentType: image/png, image/jpeg
+        responses:
+          "200":
+            description: successful operation
+            content:
+              application/json:
+                schema:
+                    type: string
+    /posts:
+      post:
+        tags:
+          - posts
+        summary: "Créer un nouveau post"
+        requestBody:
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  content:
+                    type: object
+                    properties:
+                      text:
+                        type: string
+                      altText:
+                        type: string
+              encoding:
+                image:
+                  contentType: image/png, image/jpeg
+        responses:
+          "200":
+            description: successful operation
+            content:
+              application/json:
+                schema:
+                    type: string
+      get:
+        tags:
+          - posts
+        summary: "Avoir tous les posts"
+        responses:
+          "200":
+            description: successful operation
+            content:
+              application/json:
+                schema:
+                    type: string
+
+      
+
+         
   components:
     requestBodies:
       UserArray:
@@ -130,9 +220,12 @@ contents: >-
         description: List of user object
         required: true
     schemas:
-      NewUser:
+      GetUser:
         type: object
         properties:
+          accountId:
+            type: number
+            description: "ID du compte"
           firstName:
             type: string
             description: "Prénom"
@@ -146,4 +239,7 @@ contents: >-
             type: string
             format: int32
             description: "Image de profil"
+          createdAt:
+            type: number
+            description: "http://localhost:3000/imagesProfile/12345678901234567890.png"
 contentType: yaml
