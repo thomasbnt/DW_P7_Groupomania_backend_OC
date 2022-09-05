@@ -1,7 +1,7 @@
 _id: spc_81427024916441f4b3aeef2da642bb29
 type: ApiSpec
 parentId: wrk_fb10d999178a47d2b78a2e7f14018c2e
-modified: 1662408754381
+modified: 1662422189471
 created: 1662047421048
 fileName: OCDWP7OpenAPI.yaml
 contents: >-
@@ -139,7 +139,7 @@ contents: >-
           "404":
             description: "Utilisateur non trouvé"
     /users/security:
-      post:
+      put:
         tags:
           - users
         summary: "Modifier son mot de passe et/ou son adresse email"
@@ -206,8 +206,45 @@ contents: >-
               application/json:
                 schema:
                     type: string
-
-      
+    /posts/{:id}:
+      put:
+        tags:
+          - posts
+        summary: "Éditer un post"
+        requestBody:
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  content:
+                    type: object
+                    properties:
+                      text:
+                        type: string
+                      altText:
+                        type: string
+              encoding:
+                image:
+                  contentType: image/png, image/jpeg
+        responses:
+          "200":
+            description: successful operation
+            content:
+              application/json:
+                schema:
+                    type: string
+      get:
+        tags:
+          - posts
+        summary: "Avoir un seul post"
+        responses:
+          "200":
+            description: successful operation
+            content:
+              application/json:
+                schema:
+                    type: string  
 
          
   components:
