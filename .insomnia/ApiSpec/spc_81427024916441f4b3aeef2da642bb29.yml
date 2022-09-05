@@ -1,7 +1,7 @@
 _id: spc_81427024916441f4b3aeef2da642bb29
 type: ApiSpec
 parentId: wrk_fb10d999178a47d2b78a2e7f14018c2e
-modified: 1662311788653
+modified: 1662397182471
 created: 1662047421048
 fileName: OCDWP7OpenAPI.yaml
 contents: >-
@@ -27,18 +27,35 @@ contents: >-
         summary: "Créer un nouveau compte"
         operationId: signupUser
         requestBody:
-          description: Update an existent pet in the store
           content:
-            application/json:
+            multipart/form-data:
               schema:
-                $ref: '#/components/schemas/NewUser'
+                type: object
+                properties:
+                  account:
+                    type: object
+                    properties:
+                      email:
+                        type: string
+                      password:
+                        type: string
+                      firstName:
+                        type: string
+                      lastName:
+                        type: string
+                  profileImage:
+                    type: string
+                    format: base64
+              encoding:
+                imageProfile:
+                  contentType: image/png, image/jpeg
         responses:
           "200":
             description: successful operation
             content:
               application/json:
                 schema:
-                  type: string
+                    type: string
         
     /users/login:
       post:
