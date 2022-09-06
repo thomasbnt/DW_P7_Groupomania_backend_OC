@@ -1,7 +1,7 @@
 _id: spc_81427024916441f4b3aeef2da642bb29
 type: ApiSpec
 parentId: wrk_fb10d999178a47d2b78a2e7f14018c2e
-modified: 1662422189471
+modified: 1662464849072
 created: 1662047421048
 fileName: OCDWP7OpenAPI.yaml
 contents: >-
@@ -205,7 +205,34 @@ contents: >-
             content:
               application/json:
                 schema:
-                    type: string
+                  type: array
+                  items:
+                    type: object
+                    properties:
+                      id:
+                        type: number
+                        example: 39483910293847584930
+                      acountId:
+                        type: number
+                        example: 12345678901234567890
+                      text:
+                        type: string
+                        example: "Super cool post sur les cheveaux"
+                      image:
+                        type: string
+                        example: "http://localhost:3000/posts/images/supercoolimage_1661445600.png"
+                      altText:
+                        type: string
+                        example: "Un cheval"
+                      createdAt:
+                        type: number
+                        example: 1661445600
+                      accountLiked:
+                        type: array
+                        items:
+                          type: string
+                          example: "12345678901234567890"
+                          
     /posts/{:id}:
       put:
         tags:
@@ -222,8 +249,10 @@ contents: >-
                     properties:
                       text:
                         type: string
+                        example: "Voici un cheval dans une prairie"
                       altText:
                         type: string
+                        example: "Un beau cheval"
               encoding:
                 image:
                   contentType: image/png, image/jpeg
@@ -233,7 +262,11 @@ contents: >-
             content:
               application/json:
                 schema:
-                    type: string
+                    type: object
+                    properties:
+                      success:
+                        type: string
+                        example: "Vous avez bien édité votre post"
       get:
         tags:
           - posts
@@ -245,8 +278,22 @@ contents: >-
               application/json:
                 schema:
                     type: string  
+      delete:
+          tags:
+            - posts
+          summary: "Supprimer un post"
+          responses:
+            "200":
+              description: successful operation
+              content:
+                application/json:
+                  schema:
+                      type: object
+                      properties:
+                        success:
+                          type: string
+                          example: "Vous avez bien supprimé votre post"
 
-         
   components:
     requestBodies:
       UserArray:
