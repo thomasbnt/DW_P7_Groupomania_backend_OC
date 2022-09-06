@@ -1,7 +1,7 @@
 _id: spc_81427024916441f4b3aeef2da642bb29
 type: ApiSpec
 parentId: wrk_fb10d999178a47d2b78a2e7f14018c2e
-modified: 1662464849072
+modified: 1662466235260
 created: 1662047421048
 fileName: OCDWP7OpenAPI.yaml
 contents: >-
@@ -19,6 +19,8 @@ contents: >-
   tags:
     - name: users
       description: "A propos d'un utilisateur"
+    - name: posts
+      description: "Section posts"
   paths:
     /users/signup:
       post:
@@ -89,6 +91,8 @@ contents: >-
         tags:
           - users
         summary: Obtenir ses informations de profil public
+        security:
+          - bearer_token: []
         responses:
           "200":
             description: successful operation
@@ -104,6 +108,8 @@ contents: >-
         tags:
           - users
         summary: "Editer les informations du compte connecté"
+        security:
+          - bearer_token: []
         requestBody:
           content:
             multipart/form-data:
@@ -133,6 +139,8 @@ contents: >-
           - users
         summary: "Supprimer son compte"
         operationId: deleteUser
+        security:
+        - bearer_token: []
         responses:
           "200": 
             description: "Votre compte a bien été supprimé"
@@ -144,6 +152,8 @@ contents: >-
           - users
         summary: "Modifier son mot de passe et/ou son adresse email"
         operationId: securityUser
+        security:
+        - bearer_token: []
         requestBody:
           content:
             application/json:
@@ -172,6 +182,8 @@ contents: >-
         tags:
           - posts
         summary: "Créer un nouveau post"
+        security:
+        - bearer_token: []
         requestBody:
           content:
             application/json:
@@ -199,6 +211,8 @@ contents: >-
         tags:
           - posts
         summary: "Avoir tous les posts"
+        security:
+        - bearer_token: []
         responses:
           "200":
             description: successful operation
@@ -238,6 +252,8 @@ contents: >-
         tags:
           - posts
         summary: "Éditer un post"
+        security:
+        - bearer_token: []
         requestBody:
           content:
             application/json:
@@ -271,6 +287,8 @@ contents: >-
         tags:
           - posts
         summary: "Avoir un seul post"
+        security:
+        - bearer_token: []
         responses:
           "200":
             description: successful operation
@@ -282,6 +300,8 @@ contents: >-
           tags:
             - posts
           summary: "Supprimer un post"
+          security:
+          - bearer_token: []
           responses:
             "200":
               description: successful operation
@@ -294,7 +314,14 @@ contents: >-
                           type: string
                           example: "Vous avez bien supprimé votre post"
 
+                         
   components:
+    securitySchemes:
+      bearer_token:
+        type: apiKey
+        in: header
+        name: bearer_token
+
     requestBodies:
       UserArray:
         content:
