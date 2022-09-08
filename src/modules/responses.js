@@ -11,7 +11,7 @@ class Responses {
         });
     }
 
-    error(message, res) {
+    badRequest(message, res) {
         return res.status(400).json({
             error: message || 'Error'
         });
