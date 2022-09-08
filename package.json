@@ -1,11 +1,28 @@
 {
+  "name": "dw_p6_hot_takes_backend_oc",
+  "version": "1.0.0",
+  "description": "Projet n°6 OpenClassrooms Développeur Web.",
+  "main": "app.js",
+  "scripts": {
+    "serve": "node src/server.js",
+    "nodemon": "nodemon src/server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/thomasbnt/DW_P6_Hot_Takes_backend_OC.git"
+  },
   "dependencies": {
+    "@prisma/client": "^4.3.1",
     "bcrypt": "^5.0.1",
     "cors": "^2.8.5",
     "dotenv": "^16.0.1",
     "express": "^4.18.1",
     "http": "^0.0.1-security",
     "jsonwebtoken": "^8.5.1",
-    "path": "^0.12.7"
+    "path": "^0.12.7",
+    "prisma": "^4.3.1"
+  },
+  "prisma": {
+    "schema": "src/db/schema.prisma"
   }
 }
