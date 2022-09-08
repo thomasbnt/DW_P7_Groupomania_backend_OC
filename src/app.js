@@ -3,7 +3,8 @@ const app = express();
 require('dotenv').config();
 const cors = require('cors');
 const path = require("path");
-
+const {PrismaClient, Prisma} = require('@prisma/client')
+const prisma = new PrismaClient()
 app.disable("x-powered-by");
 
 app.use(express.urlencoded({
@@ -24,7 +25,6 @@ app.use((req, res, next) => {
 // Route SIGNUP
 const signupRoute = require('./routes/signup');
 app.use('/users/signup', signupRoute);
-
 
 
 module.exports = app;
