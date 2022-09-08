@@ -1,21 +1,24 @@
-const signup = require("../models/User");
+const Users = require("../models/Users");
 const resp = require('../modules/responses');
-const validateEmailAndPassword = require("../modules/validateEmailAndPassword");
+const regexInputs = require("../modules/regexInputs");
 const hash = require("../middlewares/hash");
 
-exports.UserController = (req, res) => {
+exports.UsersSignup = (req, res) => {
     res.setHeader('Access-Control-Allow-Methods', 'POST');
     console.log('Signup request received');
-    const email = req.body.email;
-    const password = req.body.password;
+    const {email, password, firstName, lastName} = req.body
 
-    validateEmailAndPassword.checkEmail(email)
-    validateEmailAndPassword.checkPassword(password)
+    regexInputs.checkEmail(email)
+    regexInputs.checkPassword(password)
+    regexInputs.checkText(firstName)
+    regexInputs.checkText(lastName)
 
-    const emailIsValid = validateEmailAndPassword.checkEmail(email);
-    const passwordIsValid = validateEmailAndPassword.checkPassword(password);
+    const emailIsValid = regexInputs.checkEmail(email);
+    const passwordIsValid = regexInputs.checkPassword(password);
+    const firstNameIsValid = regexInputs.checkText(firstName);
+    const lastNameIsValid = regexInputs.checkText(lastName);
 
-    if (emailIsValid && passwordIsValid) {
+    if (emailIsValid && passwordIsValid && firstNameIsValid && lastNameIsValid) {
         // si l'email est déjà dans la base de donnée, alors erreur
         signup.findOne({
             email: email
