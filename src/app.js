@@ -11,7 +11,7 @@ app.use(express.urlencoded({
 }));
 
 app.use(express.json());
-app.use(cors({origin: process.env.FRONT_DOMAIN || 'same-origin'}));
+app.use(cors({origin: process.env.FRONTEND_URL || 'same-origin'}));
 
 app.use('/images', express.static(path.join(__dirname, 'images')));
 
@@ -20,6 +20,11 @@ app.use((req, res, next) => {
     res.setHeader('Accept', 'application/json, multipart/form-data');
     next();
 });
+
+// Route SIGNUP
+const signupRoute = require('./routes/signup');
+app.use('/users/signup', signupRoute);
+
 
 
 module.exports = app;
