@@ -6,7 +6,8 @@ const hash = require("../middlewares/hash");
 exports.UsersSignup = (req, res) => {
     res.setHeader('Access-Control-Allow-Methods', 'POST');
     console.log('Signup request received');
-    const {email, password, firstName, lastName} = req.body
+    const {email, password, firstName, lastName} = req.body.account
+    const profileImage = req.body.image
 
     regexInputs.checkEmail(email)
     regexInputs.checkPassword(password)
