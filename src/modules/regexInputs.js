@@ -17,6 +17,8 @@ class RegexInputs {
 
     checkText(input) {
         if (input === undefined || input === '') return false;
+        const regText = new RegExp('[a-zA-Z0-9]+')
+        return regText.test(input)
 
     }
 
