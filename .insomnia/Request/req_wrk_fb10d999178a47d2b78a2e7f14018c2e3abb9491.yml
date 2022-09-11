@@ -3,9 +3,9 @@ type: Request
 parentId: fld_wrk_fb10d999178a47d2b78a2e7f14018c2e5b7dcd14
 modified: 1662304109747
 created: 1662304109747
-url: "{{ base_url }}/users/signup"
+url: '{{ base_url }}/users/signup'
 name: Créer un nouveau compte
-description: ""
+description: ''
 method: POST
 body:
   mimeType: application/json

@@ -13,11 +13,10 @@ Cette partie est spécialement pour le **backend** du projet. Il est sous **Expr
 Pour le choix de l'ORM, **Prisma** a été choisi.
 
 > **Note**
-> 
+>
 > Si vous souhaitez voir la page **frontend**, veuillez [vous rendre sur ce dépôt GitHub](https://github.com/thomasbnt/DW_P7_Groupomania_frontend_OC).
-> 
+>
 > [![Partie Backend](https://img.shields.io/badge/Aller%20voir%20la%20partie%20Frontend%20→-informational?style=for-the-badge)](https://github.com/thomasbnt/DW_P7_Groupomania_frontend_OC)
-
 
 ## Installation
 
@@ -28,21 +27,28 @@ Pour pouvoir exécuter ce projet, veuillez suivre ces étapes.
 3. Copiez le fichier [.env.example](/.env.example) en `.env` et remplacez les valeurs par vos propres.
 4. N'oubliez pas d'avoir un accès à votre base de données MariaDB
 5. Exécutez le script backend, à coup de `npm run serve`. _Port 3000_
-6Vous pouvez maintenant accéder à l'interface de votre site.
+   6Vous pouvez maintenant accéder à l'interface de votre site.
 
-## Configuration du .env
+## Configuration du `.env`
+
 Exemple de `.env` :
 
 ```dotenv
-
-
+FRONTEND_URL=http://localhost:5000
+DATABASE_URL=mysql://USER:MDP@IP:3306/BDD
 ```
 
-> **Note**
-> `FRONT_DOMAIN` est le domaine de votre site, ici utilisé pour des raisons de sécurité (cors), nous délimitons les calls API que depuis ce domaine.
+> **Note** > `FRONTEND_URL` est le domaine de votre site, ici utilisé pour des raisons de sécurité (cors), nous délimitons les calls API que depuis ce domaine.
 
-## Cahier des charges
+## Prisma
 
+Pour la gestion de la base de données, nous utilisons **Prisma**. Pour plus d'informations, veuillez vous rendre sur [la documentation de Prisma](https://www.prisma.io/docs/).
+
+Synchroniser le modèle de données `src/db/schema.prisma` avec la base de données :
+
+```bash
+npx prisma db push
+```
 
 ## Développement
 
