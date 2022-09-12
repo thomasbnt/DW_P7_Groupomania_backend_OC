@@ -6,8 +6,8 @@
   "scripts": {
     "serve": "node src/server.js",
     "nodemon": "nodemon src/server.js",
-    "format:fix": "prettier --write .",
-    "lint:fix": "eslint --fix ."
+    "format:fix": "prettier --write ./src",
+    "lint:fix": "eslint --fix ./src"
   },
   "repository": {
     "type": "git",
