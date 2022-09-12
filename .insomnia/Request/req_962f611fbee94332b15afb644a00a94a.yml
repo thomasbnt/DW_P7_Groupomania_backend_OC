@@ -57,11 +57,11 @@ body:
     - id: pair_96321d382d444ebca21f3bba409f5425
       name: content
       value: '{ "text": "Super cool texte", "altText": "Des cheveaux" }'
-      description: ''
+      description: ""
     - id: pair_12391c59a7d0418a85d17bbe5c37caa8
       name: image
-      value: ''
-      description: ''
+      value: ""
+      description: ""
       type: file
 parameters: []
 headers:

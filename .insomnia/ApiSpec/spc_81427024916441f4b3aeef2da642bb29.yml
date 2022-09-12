@@ -1,7 +1,7 @@
 _id: spc_81427024916441f4b3aeef2da642bb29
 type: ApiSpec
 parentId: wrk_fb10d999178a47d2b78a2e7f14018c2e
-modified: 1662466235260
+modified: 1662987184318
 created: 1662047421048
 fileName: OCDWP7OpenAPI.yaml
 contents: >-
@@ -21,6 +21,8 @@ contents: >-
       description: "A propos d'un utilisateur"
     - name: posts
       description: "Section posts"
+    - name: technique
+      description: "Seulement côté technique."
   paths:
     /users/signup:
       post:
@@ -177,6 +179,7 @@ contents: >-
               application/json:
                 schema:
                     type: string
+                    
     /posts:
       post:
         tags:
@@ -245,8 +248,7 @@ contents: >-
                         type: array
                         items:
                           type: string
-                          example: "12345678901234567890"
-                          
+                          example: "12345678901234567890"                     
     /posts/{:id}:
       put:
         tags:
@@ -295,7 +297,19 @@ contents: >-
             content:
               application/json:
                 schema:
-                    type: string  
+                    type: object
+                    properties:
+                      id:
+                        type: number
+                        example: 39483910293847584930
+                      firstName:
+                        type: string
+                        example: "Thomas"
+                      lastName:
+                        type: string
+                        example: "Bnt"
+                      
+                      
       delete:
           tags:
             - posts
@@ -315,6 +329,11 @@ contents: >-
                           example: "Vous avez bien supprimé votre post"
 
                          
+  /:
+      get:
+        tags:
+          - technique
+
   components:
     securitySchemes:
       bearer_token:

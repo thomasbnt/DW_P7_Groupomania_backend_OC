@@ -3,9 +3,9 @@ type: Request
 parentId: fld_wrk_fb10d999178a47d2b78a2e7f14018c2e5b7dcd14
 modified: 1662303282704
 created: 1662303282704
-url: '{{ base_url }}/users/me'
+url: "{{ base_url }}/users/me"
 name: Obtenir ses informations de profil public
-description: ''
+description: ""
 method: GET
 body: {}
 parameters: []
