@@ -1,0 +1,34 @@
+_id: req_wrk_fb10d999178a47d2b78a2e7f14018c2e0c6fc6eb
+type: Request
+parentId: fld_wrk_fb10d999178a47d2b78a2e7f14018c2e87e38948
+modified: 1662994414698
+created: 1662994414698
+url: "{{ base_url }}/posts"
+name: Créer un nouveau post
+description: ""
+method: POST
+body:
+  mimeType: application/json
+  text: |-
+    {
+      "content": {
+        "text": "string",
+        "altText": "string"
+      }
+    }
+parameters: []
+headers:
+  - name: bearer_token
+    disabled: false
+    value: "{{ bearerToken }}"
+  - name: Content-Type
+    value: application/json
+authentication: {}
+metaSortKey: -1662994414698
+isPrivate: false
+settingStoreCookies: true
+settingSendCookies: true
+settingDisableRenderRequestBody: false
+settingEncodeUrl: true
+settingRebuildPath: true
+settingFollowRedirects: global

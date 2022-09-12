@@ -1,0 +1,21 @@
+_id: req_wrk_fb10d999178a47d2b78a2e7f14018c2e60327fa5
+type: Request
+parentId: fld_wrk_fb10d999178a47d2b78a2e7f14018c2eb41c6aff
+modified: 1662994414690
+created: 1662994414690
+url: "{{ base_url }}/status"
+name: /status
+description: ""
+method: GET
+body: {}
+parameters: []
+headers: []
+authentication: {}
+metaSortKey: -1662994414691
+isPrivate: false
+settingStoreCookies: true
+settingSendCookies: true
+settingDisableRenderRequestBody: false
+settingEncodeUrl: true
+settingRebuildPath: true
+settingFollowRedirects: global
