@@ -1,6 +1,6 @@
 ![Fait avec MariaDB](https://img.shields.io/badge/Fait%20avec%20MariaDB-%2300f.svg?&color=800&style=for-the-badge&logo=mongodb&logoColor=white)
 [![Propulsé par Prisma](https://img.shields.io/badge/Propulsé%20par%20Prisma-%234752C4.svg?&style=for-the-badge&color=0B354B&logo=prisma&logoColor=white&alt=Prisma)](https://www.prisma.io/)
-[![Fait avec ExpressJS](https://img.shields.io/badge/Fait%20avec%20Express-%234752C4.svg?&style=for-the-badge&color=white&logo=express&logoColor=black&alt=express)](https://github.com/expressjs/express)
+[![Réalisé avec ExpressJS](https://img.shields.io/badge/Réalisé%20avec%20Express-white.svg?&style=for-the-badge&color=259DFF&logo=express&logoColor=white&alt=express)](https://github.com/expressjs/express)
 [![Codacy Badge](https://img.shields.io/codacy/grade/760b3a894bef4bf0bb4a72b4598c0455?style=for-the-badge)](https://www.codacy.com/gh/thomasbnt/DW_P7_Groupomania_backend_OC/dashboard)
 [![Wakatime](https://wakatime.com/badge/github/thomasbnt/DW_P7_Groupomania_backend_OC.svg?style=for-the-badge)](https://wakatime.com/badge/github/thomasbnt/DW_P7_Groupomania_backend_OC)
 
