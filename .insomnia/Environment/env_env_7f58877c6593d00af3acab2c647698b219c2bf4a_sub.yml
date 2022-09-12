@@ -10,7 +10,7 @@ data:
   host: http://localhost:3000
   bearerToken: bearerToken
 dataPropertyOrder:
-  "&":
+  '&':
     - scheme
     - base_path
     - host

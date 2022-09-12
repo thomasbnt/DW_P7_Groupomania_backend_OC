@@ -3,16 +3,16 @@ type: Request
 parentId: fld_wrk_fb10d999178a47d2b78a2e7f14018c2e5b7dcd14
 modified: 1662994414701
 created: 1662994414701
-url: "{{ base_url }}/users/me"
+url: '{{ base_url }}/users/me'
 name: Supprimer son compte
-description: ""
+description: ''
 method: DELETE
 body: {}
 parameters: []
 headers:
   - name: bearer_token
     disabled: false
-    value: "{{ bearerToken }}"
+    value: '{{ bearerToken }}'
 authentication: {}
 metaSortKey: -1662994414701
 isPrivate: false

@@ -3,9 +3,9 @@ type: Request
 parentId: fld_wrk_fb10d999178a47d2b78a2e7f14018c2e5b7dcd14
 modified: 1662998805504
 created: 1662304109747
-url: "{{ _.host }}/users/signup"
+url: '{{ _.host }}/users/signup'
 name: Créer un nouveau compte
-description: ""
+description: ''
 method: POST
 body:
   mimeType: multipart/form-data
@@ -16,8 +16,8 @@ body:
       id: pair_0d5e90d42435485a97440c2852c47b39
     - id: pair_661407fb24af4848abd3f9d7ce9d3a18
       name: image
-      value: ""
-      description: ""
+      value: ''
+      description: ''
       type: file
       multiline: null
       fileName: C:\Users\thomasbnt\Downloads\mueg0-removebg-preview.png

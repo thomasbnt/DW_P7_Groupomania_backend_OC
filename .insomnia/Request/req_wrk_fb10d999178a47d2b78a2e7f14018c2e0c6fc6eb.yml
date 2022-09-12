@@ -3,9 +3,9 @@ type: Request
 parentId: fld_wrk_fb10d999178a47d2b78a2e7f14018c2e87e38948
 modified: 1662994414698
 created: 1662994414698
-url: "{{ base_url }}/posts"
+url: '{{ base_url }}/posts'
 name: Créer un nouveau post
-description: ""
+description: ''
 method: POST
 body:
   mimeType: application/json
@@ -20,7 +20,7 @@ parameters: []
 headers:
   - name: bearer_token
     disabled: false
-    value: "{{ bearerToken }}"
+    value: '{{ bearerToken }}'
   - name: Content-Type
     value: application/json
 authentication: {}

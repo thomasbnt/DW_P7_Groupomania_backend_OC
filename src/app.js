@@ -25,11 +25,16 @@ app.use((req, res, next) => {
   next()
 })
 
+// Route Status
 const status = require('./routes/status')
 app.use('/status', status)
 
 // Route Users
 const users = require('./routes/users')
 app.use('/users', users)
+
+// Route Posts
+const posts = require('./routes/posts')
+app.use('/posts', posts)
 
 module.exports = app

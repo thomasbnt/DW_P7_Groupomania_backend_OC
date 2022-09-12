@@ -6,8 +6,7 @@ const UserCtrl = require('../controllers/users')
 const upload = require('../middlewares/multer')
 const auth = require('../middlewares/authenticateToken')
 
-router.get('/', UserCtrl.UsersGetAll)
-
+// Signup
 router.post(
   '/signup',
   cors({ methods: 'POST' }),
@@ -15,11 +14,18 @@ router.post(
   UserCtrl.UsersSignup
 )
 
+// Login
 router.post('/login', cors({ methods: 'POST' }), UserCtrl.UsersLogin)
 
 // Me
 router.get('/me', cors({ methods: 'GET' }), auth, UserCtrl.UsersMeGet)
 router.put('/me', cors({ methods: 'PUT' }), auth, UserCtrl.UsersMePut)
-router.delete('/me', cors({ methods: 'DELETE' }), auth, UserCtrl.UsersMeDelete)
+router.delete('/me', cors({ methods: 'PUT' }), auth, UserCtrl.UsersSecurity)
+router.put(
+  '/security',
+  cors({ methods: 'DELETE' }),
+  auth,
+  UserCtrl.UsersMeDelete
+)
 
 module.exports = router

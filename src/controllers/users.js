@@ -4,8 +4,8 @@ const hash = require('../middlewares/hash')
 const { PrismaClient } = require('@prisma/client')
 const prisma = new PrismaClient()
 
+// Signup and login part
 exports.UsersSignup = async (req, res) => {
-  res.setHeader('Access-Control-Allow-Methods', 'POST')
   console.log('Signup request received')
   // Vérifier si le contenu account n'est pas vide dans un premier temps
   if (req.body.account) {
@@ -93,7 +93,6 @@ exports.UsersSignup = async (req, res) => {
   }
 }
 exports.UsersLogin = async (req, res) => {
-  res.setHeader('Access-Control-Allow-Methods', 'POST')
   console.log('Login request received')
   const account = JSON.parse(req.body.account)
   if (JSON.parse(req.body.account)) {
@@ -146,12 +145,8 @@ exports.UsersLogin = async (req, res) => {
     )
   }
 }
-exports.UsersGetAll = async (req, res) => {
-  console.log('Get all users request received')
-  resp.success('Good', res)
-}
 
-// Me Controller
+// Me part
 exports.UsersMeGet = async (req, res) => {
   console.log('Get user request received')
   resp.success('Good', res)
@@ -162,5 +157,9 @@ exports.UsersMePut = async (req, res) => {
 }
 exports.UsersMeDelete = async (req, res) => {
   console.log('Delete user request received')
+  resp.success('Good', res)
+}
+exports.UsersSecurity = async (req, res) => {
+  console.log('Security user request received')
   resp.success('Good', res)
 }

@@ -13,7 +13,7 @@ parameters: []
 headers:
   - name: bearer_token
     disabled: false
-    value: "{{ bearerToken }}"
+    value: '{{ bearerToken }}'
 authentication: {}
 metaSortKey: -1662303282703
 isPrivate: false
