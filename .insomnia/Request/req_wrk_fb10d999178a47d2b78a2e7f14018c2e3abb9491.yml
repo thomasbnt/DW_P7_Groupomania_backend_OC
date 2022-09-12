@@ -1,25 +1,31 @@
 _id: req_wrk_fb10d999178a47d2b78a2e7f14018c2e3abb9491
 type: Request
 parentId: fld_wrk_fb10d999178a47d2b78a2e7f14018c2e5b7dcd14
-modified: 1662304109747
+modified: 1662998805504
 created: 1662304109747
-url: "{{ base_url }}/users/signup"
+url: "{{ _.host }}/users/signup"
 name: Créer un nouveau compte
 description: ""
 method: POST
 body:
-  mimeType: application/json
-  text: |-
-    {
-      "firstName": "string",
-      "lastName": "string",
-      "email": "string",
-      "imageProfile": "string"
-    }
+  mimeType: multipart/form-data
+  params:
+    - name: account
+      value: '{  "firstName": "string",  "lastName": "string",  "email":
+        "string",  "imageProfile": "string"}'
+      id: pair_0d5e90d42435485a97440c2852c47b39
+    - id: pair_661407fb24af4848abd3f9d7ce9d3a18
+      name: image
+      value: ""
+      description: ""
+      type: file
+      multiline: null
+      fileName: C:\Users\thomasbnt\Downloads\mueg0-removebg-preview.png
 parameters: []
 headers:
   - name: Content-Type
-    value: application/json
+    value: multipart/form-data
+    id: pair_41c0b5f144024d9ca37331af8a56a295
 authentication: {}
 metaSortKey: -1662304109747
 isPrivate: false

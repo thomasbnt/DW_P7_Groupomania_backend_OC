@@ -1,0 +1,34 @@
+_id: req_wrk_fb10d999178a47d2b78a2e7f14018c2e1b098573
+type: Request
+parentId: fld_wrk_fb10d999178a47d2b78a2e7f14018c2e5b7dcd14
+modified: 1662994414699
+created: 1662994414699
+url: "{{ base_url }}/users/security"
+name: Modifier son mot de passe et/ou son adresse email
+description: ""
+method: PUT
+body:
+  mimeType: application/json
+  text: |-
+    {
+      "account": {
+        "newEmail": "string",
+        "newPassword": "string"
+      }
+    }
+parameters: []
+headers:
+  - name: bearer_token
+    disabled: false
+    value: "{{ bearerToken }}"
+  - name: Content-Type
+    value: application/json
+authentication: {}
+metaSortKey: -1662994414699
+isPrivate: false
+settingStoreCookies: true
+settingSendCookies: true
+settingDisableRenderRequestBody: false
+settingEncodeUrl: true
+settingRebuildPath: true
+settingFollowRedirects: global

@@ -1,0 +1,27 @@
+_id: req_wrk_fb10d999178a47d2b78a2e7f14018c2e00ac9da2
+type: Request
+parentId: fld_wrk_fb10d999178a47d2b78a2e7f14018c2e5b7dcd14
+modified: 1662994414705
+created: 1662994414705
+url: "{{ base_url }}/users/login"
+name: Se connecter à son compte
+description: ""
+method: POST
+body: {}
+parameters:
+  - name: email
+    disabled: false
+    value: string
+  - name: password
+    disabled: false
+    value: string
+headers: []
+authentication: {}
+metaSortKey: -1662994414705
+isPrivate: false
+settingStoreCookies: true
+settingSendCookies: true
+settingDisableRenderRequestBody: false
+settingEncodeUrl: true
+settingRebuildPath: true
+settingFollowRedirects: global
