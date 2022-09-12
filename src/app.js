@@ -25,8 +25,11 @@ app.use((req, res, next) => {
   next()
 })
 
-// Route SIGNUP
-const signupRoute = require('./routes/signup')
-app.use('/users/signup', signupRoute)
+const status = require('./routes/status')
+app.use('/status', status)
+
+// Route Users
+const users = require('./routes/users')
+app.use('/users', users)
 
 module.exports = app

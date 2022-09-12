@@ -27,7 +27,7 @@ Pour pouvoir exécuter ce projet, veuillez suivre ces étapes.
 3. Copiez le fichier [.env.example](/.env.example) en `.env` et remplacez les valeurs par vos propres.
 4. N'oubliez pas d'avoir un accès à votre base de données MariaDB
 5. Exécutez le script backend, à coup de `npm run serve`. _Port 3000_
-   6Vous pouvez maintenant accéder à l'interface de votre site.
+6. Vous pouvez maintenant accéder à l'interface de votre site.
 
 ## Configuration du `.env`
 

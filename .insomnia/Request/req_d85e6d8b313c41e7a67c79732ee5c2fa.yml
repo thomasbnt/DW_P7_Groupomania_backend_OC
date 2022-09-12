@@ -30,11 +30,11 @@ body:
     - id: pair_1dc33c82867b4c3782d3b8b7392fa7f7
       name: account
       value: '{  "firstname": "Thomas", "lastname": "Bnt" }'
-      description: ""
+      description: ''
     - id: pair_61f10276bbca495cbf371c4a8d35b13f
       name: imageProfile
-      value: ""
-      description: ""
+      value: ''
+      description: ''
       type: file
       multiline: null
 parameters: []

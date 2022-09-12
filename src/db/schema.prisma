@@ -14,18 +14,20 @@ model User {
   id        Int      @id @default(autoincrement())
   createdAt DateTime @default(now())
   email     String   @unique
-  firstName String
-  lastName  String
+  password  String   @db.VarChar(255)
+  firstName String   @db.VarChar(255)
+  lastName  String   @db.VarChar(255)
   role      Role     @default(USER)
+  imageProfile String @db.VarChar(255)
+  banned   Boolean  @default(false)
 }
 
 model Post {
   id        Int      @id @default(autoincrement())
   createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
-  published Boolean  @default(false)
   text      String   @db.VarChar(255)
-  authorId  Int
+  userId  Int
+  image String? @db.VarChar(255)
 }
 
 enum Role {
