@@ -128,3 +128,4 @@ dist
 
 # Images
 src/images/*
+!src/images/.gitkeep
