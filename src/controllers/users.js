@@ -26,11 +26,6 @@ exports.UsersSignup = async (req, res) => {
         const profileImage = req.file.filename
         console.log({ profileImage })
 
-        regexInputs.checkEmail(email)
-        regexInputs.checkPassword(password)
-        regexInputs.checkText(firstName)
-        regexInputs.checkText(lastName)
-
         const emailIsValid = regexInputs.checkEmail(email)
         const passwordIsValid = regexInputs.checkPassword(password)
         const firstNameIsValid = regexInputs.checkText(firstName)
