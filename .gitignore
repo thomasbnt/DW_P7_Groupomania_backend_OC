@@ -127,5 +127,6 @@ dist
 .pnp.*
 
 # Images
-src/images/*
 !src/images/.gitkeep
+!src/images/profiles/.gitkeep
+!src/images/posts/.gitkeep
