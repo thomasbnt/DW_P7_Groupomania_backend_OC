@@ -3,14 +3,14 @@ const router = express.Router()
 const cors = require('cors')
 
 const UserCtrl = require('../controllers/users')
-const upload = require('../middlewares/multer')
+const uploadImageProfile = require('../middlewares/multerImagesProfiles')
 const auth = require('../middlewares/authenticateToken')
 
 // Signup
 router.post(
   '/signup',
   cors({ methods: 'POST' }),
-  upload.single('image'),
+  uploadImageProfile.single('image'),
   UserCtrl.UsersSignup
 )
 

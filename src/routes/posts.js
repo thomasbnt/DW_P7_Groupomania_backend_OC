@@ -3,13 +3,9 @@ const router = express.Router()
 const cors = require('cors')
 
 const PostCtrl = require('../controllers/posts')
-const upload = require('../middlewares/multer')
+const upload = require('../middlewares/multerImagesPosts')
 const auth = require('../middlewares/authenticateToken')
 
-console.log(typeof router)
-console.log(typeof cors)
-console.log(typeof auth)
-console.log(typeof upload.single('image'))
 // Créer un nouveau post
 router.post(
   '/',

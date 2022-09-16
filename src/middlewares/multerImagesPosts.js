@@ -1,4 +1,4 @@
-const multer = require('multer')
+const multerImagesPosts = require('multer')
 const MIME_TYPE_MAP = {
   'image/png': 'png',
   'image/jpeg': 'jpg',
@@ -13,13 +13,11 @@ function getFileNameWithoutExtension(filename) {
 }
 
 // On traite l'image envoyée et lui donne un nom
-const storage = multer.diskStorage({
+const storage = multerImagesPosts.diskStorage({
   destination: (req, file, cb) => {
-    cb(null, 'src/images')
+    cb(null, 'src/images/posts')
   },
   filename: (req, file, cb) => {
-    console.log('oui')
-    /*console.log(MIME_TYPE_MAP[file.mimetype])*/
     cb(
       null,
       `${getFileNameWithoutExtension(file.originalname)}-${+Date.now()}.${
@@ -29,4 +27,4 @@ const storage = multer.diskStorage({
   },
 })
 
-module.exports = multer({ storage: storage })
+module.exports = multerImagesPosts({ storage: storage })
