@@ -91,62 +91,55 @@ exports.UsersSignup = async (req, res) => {
 
 exports.UsersLogin = async (req, res) => {
   console.log('Login request received')
-  const account = JSON.parse(req.body.account)
-  if (JSON.parse(req.body.account)) {
-    const account = JSON.parse(req.body.account)
-    console.log({ account: account })
-    console.log({ email: account.email })
-  } else {
-    console.log('Err')
-  }
-
-  if (account && account.email && account.password) {
-    const { email, password } = account
-
-    regexInputs.checkEmail(email)
-    regexInputs.checkPassword(password)
-
-    const emailIsValid = regexInputs.checkEmail(email)
-    const passwordIsValid = regexInputs.checkPassword(password)
-
-    if (emailIsValid && passwordIsValid) {
-      const user = await prisma.user.findUnique({
-        where: { email: email },
-      })
-      console.log({ user })
-      if (user) {
-        const passwordIsValid = await hash.compare(password, user.password)
-        if (passwordIsValid) {
-          resp.success(user, res)
-        } else {
-          resp.badRequest('Mot de passe incorrect', res)
-        }
-      } else {
-        resp.badRequest("L'utilisateur n'existe pas", res)
-      }
-    } else {
-      !emailIsValid
-        ? resp.badRequest("L'email que vous avez entré n'est pas valide", res)
-        : null
-      !passwordIsValid
-        ? resp.badRequest(
-            'Le mot de passe doit être au minimum de 8 caractères comprenant un caractère spécial, un chiffre, une lettre majuscule.',
-            res
-          )
-        : null
-    }
-  } else {
-    resp.badRequest(
-      'Il manque des informations pour vous connecter. Veuillez bien fournir tout les champs.',
+  const { email, password } = req.body
+  console.log({ email, password })
+  if (!email || !password)
+    return resp.badRequest('Veuillez remplir tous les champs', res)
+  const userFindUniqueByEmail = await prisma.user.findUnique({
+    where: { email: email },
+  })
+  if (!userFindUniqueByEmail)
+    return resp.badRequest(
+      "Le compte avec cette adresse email n'existe pas. Veuillez vous enregistrer.",
       res
     )
-  }
+  // On vérifie si le mot de passe est correct
+  const passwordIsValid = await hash.compare(
+    password,
+    userFindUniqueByEmail.password
+  )
+  if (!passwordIsValid)
+    return resp.badRequest('Lse mot de passe est incorrect', res)
+  // On génère un token
+  // TODO : Input MemorizeMe pour le front
+  const token = await hash.genToken(userFindUniqueByEmail)
+  console.log({ token })
+  res.status(200).json({
+    message: 'Connexion réussie',
+    token: token,
+  })
 }
 
 // Me part
 exports.UsersMeGet = async (req, res) => {
   console.log('Get user request received')
-  resp.success('Good', res)
+  console.log({ user: req.user })
+  const allDataOfUser = req.user
+  // On met user dans un objet pour pouvoir le modifier
+  const userObject = { ...allDataOfUser }
+
+  // ajout d'un message
+  userObject.message = 'Informations utilisateur récupérées avec succès'
+
+  // On supprime certaines informations de l'utilisateur
+  delete userObject.user.password
+  delete userObject.user.email
+  delete userObject.user.banned
+  delete userObject.user.role
+  delete userObject.iat
+
+  // On renvoie l'objet
+  resp.success(userObject, res)
 }
 exports.UsersMePut = async (req, res) => {
   console.log('Update user request received')
