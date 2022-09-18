@@ -11,7 +11,7 @@ module.exports = (req, res, next) => {
       return resp.invalidCredentials('Invalid credentials', res)
 
     // On décode le token
-    jwt.verify(token, process.env.KEY, (err, user) => {
+    jwt.verify(token, process.env.JWT_SECRET_KEY, (err, user) => {
       if (err) return resp.forbidden('Forbidden.', res)
       req.user = user
       next()
