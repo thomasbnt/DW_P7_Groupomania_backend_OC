@@ -239,7 +239,77 @@ exports.UsersMeDelete = async (req, res) => {
     resp.badRequest("L'utilisateur n'existe pas/plus.", res)
   }
 }
+
 exports.UsersSecurity = async (req, res) => {
   console.log("Security user request received")
-  resp.success("Good", res)
+  let changedActions = []
+  // On vérifie si le mot de passe a été changé
+  if (req.body.newPassword) {
+    // On vérifie si le mot de passe est valide
+    const passwordIsValid = regexInputs.checkPassword(req.body.newPassword)
+    console.log({ passwordIsValid })
+    if (passwordIsValid) {
+      // On hash le mot de passe
+      const passwordHashed = await hash.gen(req.body.newPassword)
+      // On met à jour le mot de passe
+      try {
+        await prisma.user.update({
+          where: { id: req.user.user.id },
+          data: { password: passwordHashed },
+        })
+        changedActions.push("Le mot de passe")
+      } catch (error) {
+        console.log({ error })
+        resp.badRequest("L'utilisateur n'existe pas/plus.", res)
+      }
+    } else {
+      return resp.badRequest(
+        "Le mot de passe doit contenir au moins 8 caractères, une majuscule, une minuscule et un chiffre.",
+        res
+      )
+    }
+  }
+  // On vérifie si l'email a été changé
+  if (req.body.newEmail) {
+    // On vérifie si l'email est valide
+    const emailIsValid = regexInputs.checkEmail(req.body.newEmail)
+    if (emailIsValid) {
+      // On met à jour l'email
+      try {
+        await prisma.user.update({
+          where: { id: req.user.user.id },
+          data: { email: req.body.newEmail },
+        })
+        changedActions.push("L'email")
+      } catch (error) {
+        console.log({ error })
+        resp.badRequest("L'utilisateur n'existe pas/plus.", res)
+      }
+    } else {
+      return resp.badRequest("L'email n'est pas valide.", res)
+    }
+  }
+
+  console.log({ changedActions })
+  if (changedActions.length === 0) {
+    return resp.badRequest("Aucune information n'a été modifiée", res)
+  }
+  if (changedActions.length <= 1) {
+    return resp.success(`${changedActions} a été modifié.`, res)
+  }
+  if (changedActions.length > 1 && changedActions.length < 3) {
+    function ajoutVirgule(changedActions) {
+      changedActions.splice(changedActions.length - 1, 0, "et")
+      // remplace les virgules par des espaces ainsi que les majuscules par des minuscules
+      changedActions = changedActions.join(" ").toLowerCase()
+      return changedActions
+    }
+
+    return resp.success(
+      `Les informations suivantes ont été modifiées : ${ajoutVirgule(
+        changedActions
+      )}.`,
+      res
+    )
+  }
 }
