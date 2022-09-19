@@ -3,16 +3,16 @@ type: Request
 parentId: fld_wrk_fb10d999178a47d2b78a2e7f14018c2e87e38948
 modified: 1662994414694
 created: 1662994414694
-url: '{{ base_url }}/posts/{{ :id }}'
+url: "{{ base_url }}/posts/{{ :id }}"
 name: Avoir un seul post
-description: ''
+description: ""
 method: GET
 body: {}
 parameters: []
 headers:
   - name: bearer_token
     disabled: false
-    value: '{{ bearerToken }}'
+    value: "{{ bearerToken }}"
 authentication: {}
 metaSortKey: -1662994414694
 isPrivate: false

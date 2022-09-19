@@ -1,21 +1,32 @@
 _id: req_wrk_fb10d999178a47d2b78a2e7f14018c2e00ac9da2
 type: Request
 parentId: fld_wrk_fb10d999178a47d2b78a2e7f14018c2e5b7dcd14
-modified: 1662994414705
+modified: 1663605884635
 created: 1662994414705
-url: '{{ base_url }}/users/login'
+url: "{{ base_url }}/users/login"
 name: Se connecter à son compte
-description: ''
+description: ""
 method: POST
-body: {}
+body:
+  mimeType: application/json
+  text: |-
+    {
+    	"email": "contact@thomasbnt.fr",
+    	"password": "MyAweso?me.Passw0rd"
+    }
 parameters:
   - name: email
     disabled: false
     value: string
+    id: pair_f20deab23a8b4dca9bf549c8735ac60d
   - name: password
     disabled: false
     value: string
-headers: []
+    id: pair_e42f2dd454134c4981ac2ec2e783fd84
+headers:
+  - name: Content-Type
+    value: application/json
+    id: pair_b45bc06c8a7c4019925db38ef7fe1f25
 authentication: {}
 metaSortKey: -1662994414705
 isPrivate: false

@@ -1,21 +1,37 @@
 _id: req_wrk_fb10d999178a47d2b78a2e7f14018c2e76b1f4c4
 type: Request
 parentId: fld_wrk_fb10d999178a47d2b78a2e7f14018c2e5b7dcd14
-modified: 1662303282703
+modified: 1663605939328
 created: 1662303282703
-url: '{{ base_url }}/users/me'
+url: "{{ base_url }}/users/me"
 name: Editer les informations du compte connecté
-description: ''
-method: PUT
+description: ""
+method: POST
 body:
   mimeType: multipart/form-data
+  params:
+    - name: account
+      value: '{"firstName": "thomas"}'
+      id: pair_3f13489852eb41b9a3e73b947c1b979c
+      type: text
+      multiline: false
+    - id: pair_51c7f8af65984c6d84bd80d29c7231ce
+      name: imageProfile
+      value: ""
+      description: ""
+      type: file
+      multiline: null
+      fileName: C:\Users\thomasbnt\Downloads\Rounded.png
 parameters: []
 headers:
-  - name: bearer_token
-    disabled: false
-    value: '{{ bearerToken }}'
-authentication: {}
-metaSortKey: -1662303282703
+  - name: Content-Type
+    value: multipart/form-data
+    id: pair_66021cb79316439e9e137eee73e80041
+authentication:
+  type: bearer
+  token: "{{ _.bearertoken }}"
+  disabled: false
+metaSortKey: -1662994414702.5
 isPrivate: false
 settingStoreCookies: true
 settingSendCookies: true
