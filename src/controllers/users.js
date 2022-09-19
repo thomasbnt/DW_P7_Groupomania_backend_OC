@@ -110,8 +110,14 @@ exports.UsersLogin = async (req, res) => {
   )
   if (!passwordIsValid)
     return resp.badRequest("Lse mot de passe est incorrect", res)
-  // On génère un token
+  // Vérifier si l'user est banni
+  if (userFindUniqueByEmail.banned)
+    return resp.badRequest(
+      "Vous ne pouvez pas vous connecter à votre compte.",
+      res
+    )
   // TODO : Input MemorizeMe pour le front
+  // On génère un token
   const token = await hash.genToken(userFindUniqueByEmail)
   console.log({ token })
   res.status(200).json({
