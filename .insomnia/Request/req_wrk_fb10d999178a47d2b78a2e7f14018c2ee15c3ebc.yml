@@ -19,11 +19,14 @@ body:
 parameters: []
 headers:
   - name: bearer_token
-    disabled: false
     value: "{{ bearerToken }}"
+    disabled: false
   - name: Content-Type
     value: application/json
-authentication: {}
+authentication:
+  type: bearer
+  token: "{{bearerToken}}"
+  prefix: ""
 metaSortKey: -1662994414695
 isPrivate: false
 settingStoreCookies: true

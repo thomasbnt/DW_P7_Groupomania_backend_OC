@@ -1,10 +1,10 @@
-_id: req_wrk_fb10d999178a47d2b78a2e7f14018c2e0c6fc6eb
+_id: req_wrk_fb10d999178a47d2b78a2e7f14018c2e77fa05b2
 type: Request
 parentId: fld_wrk_fb10d999178a47d2b78a2e7f14018c2e87e38948
-modified: 1662994414698
-created: 1662994414698
-url: "{{ base_url }}/posts"
-name: Créer un nouveau post
+modified: 1663620028026
+created: 1663620028026
+url: "{{ base_url }}/posts/{{ :id }}"
+name: Éditer un post
 description: ""
 method: POST
 body:
@@ -12,22 +12,19 @@ body:
   text: |-
     {
       "content": {
-        "text": "string",
-        "altText": "string"
+        "text": "Voici un cheval dans une prairie",
+        "altText": "Un beau cheval"
       }
     }
 parameters: []
 headers:
-  - name: bearer_token
-    value: "{{ bearerToken }}"
-    disabled: false
   - name: Content-Type
     value: application/json
 authentication:
   type: bearer
   token: "{{bearerToken}}"
   prefix: ""
-metaSortKey: -1662994414698
+metaSortKey: -1663620028026
 isPrivate: false
 settingStoreCookies: true
 settingSendCookies: true

@@ -1,7 +1,7 @@
 _id: spc_81427024916441f4b3aeef2da642bb29
 type: ApiSpec
 parentId: wrk_fb10d999178a47d2b78a2e7f14018c2e
-modified: 1663594613383
+modified: 1663627033431
 created: 1662047421048
 fileName: OCDWP7OpenAPI.yaml
 contents: >-
@@ -94,7 +94,7 @@ contents: >-
           - users
         summary: Obtenir ses informations de profil public
         security:
-          - bearer_token: []
+          - bearerAuth: []
         responses:
           "200":
             description: successful operation
@@ -106,12 +106,12 @@ contents: >-
             description: Invalid username supplied
           "404":
             description: User not found
-      put:
+      post:
         tags:
           - users
         summary: "Editer les informations du compte connecté"
         security:
-          - bearer_token: []
+          - bearerAuth: []
         requestBody:
           content:
             multipart/form-data:
@@ -136,49 +136,40 @@ contents: >-
             description: Invalid user supplied
           "404":
             description: User not found
+    /users/security:
       delete:
         tags:
           - users
         summary: "Supprimer son compte"
         operationId: deleteUser
         security:
-        - bearer_token: []
+        - bearerAuth: []
         responses:
           "200": 
             description: "Votre compte a bien été supprimé"
           "404":
             description: "Utilisateur non trouvé"
-    /users/security:
-      put:
+      post:
         tags:
           - users
         summary: "Modifier son mot de passe et/ou son adresse email"
         operationId: securityUser
         security:
-        - bearer_token: []
+        - bearerAuth: []
         requestBody:
           content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  account:
-                    type: object
-                    properties:
-                      newEmail:
-                        type: string
-                      newPassword:
-                        type: string
-              encoding:
-                imageProfile:
-                  contentType: image/png, image/jpeg
+              application/json:
+                schema:
+                  $ref: "#/components/schemas/PostUserSecurity"
         responses:
           "200":
             description: successful operation
             content:
               application/json:
                 schema:
-                    type: string
+                  properties:
+                    success:
+                      type: string
                     
     /posts:
       post:
@@ -186,7 +177,7 @@ contents: >-
           - posts
         summary: "Créer un nouveau post"
         security:
-        - bearer_token: []
+        - bearerAuth: []
         requestBody:
           content:
             application/json:
@@ -215,7 +206,7 @@ contents: >-
           - posts
         summary: "Avoir tous les posts"
         security:
-        - bearer_token: []
+        - bearerAuth: []
         responses:
           "200":
             description: successful operation
@@ -250,12 +241,12 @@ contents: >-
                           type: string
                           example: "12345678901234567890"                     
     /posts/{:id}:
-      put:
+      post:
         tags:
           - posts
         summary: "Éditer un post"
         security:
-        - bearer_token: []
+        - bearerAuth: []
         requestBody:
           content:
             application/json:
@@ -290,7 +281,7 @@ contents: >-
           - posts
         summary: "Avoir un seul post"
         security:
-        - bearer_token: []
+        - bearerAuth: []
         responses:
           "200":
             description: successful operation
@@ -315,7 +306,7 @@ contents: >-
             - posts
           summary: "Supprimer un post"
           security:
-          - bearer_token: []
+          - bearerAuth: []
           responses:
             "200":
               description: successful operation
@@ -347,10 +338,10 @@ contents: >-
 
   components:
     securitySchemes:
-      bearer_token:
-        type: apiKey
-        in: header
-        name: bearer_token
+      bearerAuth:
+        type: http
+        scheme: bearer
+        bearerFormat: JWT
 
     requestBodies:
       UserArray:
@@ -364,7 +355,7 @@ contents: >-
       GetUser:
         type: object
         properties:
-          accountId:
+          id:
             type: number
             description: "ID du compte"
           firstName:
@@ -383,4 +374,14 @@ contents: >-
           createdAt:
             type: number
             description: "http://localhost:3000/imagesProfile/12345678901234567890.png"
+      PostUserSecurity:
+        type: object
+        properties:
+          newEmail:
+            type: string
+            description: "Nouvelle adresse email"
+            example: "contact@thomasbnt.fr"
+          newPassword:
+            type: string
+            description: "Nouveau mot de passe"
 contentType: yaml

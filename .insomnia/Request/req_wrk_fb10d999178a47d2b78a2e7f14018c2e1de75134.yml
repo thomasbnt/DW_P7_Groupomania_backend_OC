@@ -13,7 +13,10 @@ headers:
   - name: bearer_token
     disabled: false
     value: "{{ bearerToken }}"
-authentication: {}
+authentication:
+  type: bearer
+  token: "{{bearerToken}}"
+  prefix: ""
 metaSortKey: -1662994414694
 isPrivate: false
 settingStoreCookies: true

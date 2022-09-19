@@ -1,20 +1,19 @@
 _id: req_wrk_fb10d999178a47d2b78a2e7f14018c2e38e8e88f
 type: Request
 parentId: fld_wrk_fb10d999178a47d2b78a2e7f14018c2e5b7dcd14
-modified: 1663594367150
+modified: 1663626112389
 created: 1662994414701
-url: "{{ base_url }}/users/me"
+url: "{{ base_url }}/users/security"
 name: Supprimer son compte
 description: ""
 method: DELETE
 body: {}
 parameters: []
-headers:
-  - name: bearer_token
-    disabled: false
-    value: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoxNSwiY3JlYXRlZEF0IjoiMjAyMi0wOS0xOVQxMzoyOTowNy4wNjJaIiwiZW1haWwiOiJjb250YWN0QHRob21hc2JudC5mciIsInBhc3N3b3JkIjoiJDJiJDEwJHNwTUhYTTBGLjkyWGt1YTIwWDVubXVRck16LkJ4LnBabmc0OUpNNzVPM1FrNjFTc0VTNERxIiwiZmlyc3ROYW1lIjoiR2Vlb3JnZSIsImxhc3ROYW1lIjoiV2FzaGluZ3RvbiIsInJvbGUiOiJVU0VSIiwiaW1hZ2VQcm9maWxlIjoiaHR0cDovL2xvY2FsaG9zdDozMDAwL2ltYWdlcy9wcm9maWxlcy9tdWVnMC1yZW1vdmViZy1wcmV2aWV3LTE2NjM1OTQxNDY5NzQucG5nIiwiYmFubmVkIjpmYWxzZX0sImlhdCI6MTY2MzU5NDM0N30.t4SuBjX5zFXMT-QySdwVrtKMYMNNZOcFc51FYxOpvYY
-    id: pair_ecbc25bac88344309b96dfbbaaec0b4b
-authentication: {}
+headers: []
+authentication:
+  type: bearer
+  token: "{{ _.bearertoken }}"
+  prefix: ""
 metaSortKey: -1662994414701
 isPrivate: false
 settingStoreCookies: true

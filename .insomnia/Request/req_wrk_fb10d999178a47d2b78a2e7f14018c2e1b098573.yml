@@ -1,7 +1,7 @@
 _id: req_wrk_fb10d999178a47d2b78a2e7f14018c2e1b098573
 type: Request
 parentId: fld_wrk_fb10d999178a47d2b78a2e7f14018c2e5b7dcd14
-modified: 1663605938466
+modified: 1663627376999
 created: 1662994414699
 url: "{{ base_url }}/users/security"
 name: Modifier son mot de passe et/ou son adresse email
@@ -9,23 +9,19 @@ description: ""
 method: POST
 body:
   mimeType: application/json
-  text: |-
+  text: |
     {
-      "account": {
-        "newEmail": "string",
-        "newPassword": "string"
+    	"newEmail": "contact@tthomas.fr"
       }
-    }
 parameters: []
 headers:
-  - name: bearer_token
-    disabled: false
-    value: "{{ bearerToken }}"
-    id: pair_ee634c84398d4918b71979c57a4083ac
   - name: Content-Type
     value: application/json
     id: pair_a51474e991914917a7e68f2f544e4d62
-authentication: {}
+authentication:
+  type: bearer
+  token: "{{ _.bearertoken }}"
+  prefix: ""
 metaSortKey: -1662994414702
 isPrivate: false
 settingStoreCookies: true

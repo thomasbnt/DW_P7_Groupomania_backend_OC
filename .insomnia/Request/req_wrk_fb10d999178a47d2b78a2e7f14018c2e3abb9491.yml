@@ -1,7 +1,7 @@
 _id: req_wrk_fb10d999178a47d2b78a2e7f14018c2e3abb9491
 type: Request
 parentId: fld_wrk_fb10d999178a47d2b78a2e7f14018c2e5b7dcd14
-modified: 1663605878303
+modified: 1663626408651
 created: 1662304109747
 url: "{{ base_url }}/users/signup"
 name: Créer un nouveau compte
@@ -15,12 +15,12 @@ body:
         "contact@thomasbnt.fr", "password": "MyAweso?me.Passw0rd"}'
       id: pair_0d5e90d42435485a97440c2852c47b39
     - id: pair_661407fb24af4848abd3f9d7ce9d3a18
-      name: image
+      name: profileImage
       value: ""
       description: ""
       type: file
       multiline: null
-      fileName: C:\Users\thomasbnt\Downloads\mueg0-removebg-preview.png
+      fileName: C:\Users\thomasbnt\Downloads\Rounded.png
 parameters: []
 headers:
   - name: Content-Type
