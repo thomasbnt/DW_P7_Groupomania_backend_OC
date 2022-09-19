@@ -5,12 +5,13 @@ const cors = require("cors")
 const UserCtrl = require("../controllers/users")
 const uploadImageProfile = require("../middlewares/multerImagesProfiles")
 const auth = require("../middlewares/authenticateToken")
+const res = require("express/lib/response")
 
 // Signup
 router.post(
   "/signup",
   cors({ methods: "POST" }),
-  uploadImageProfile.single("image"),
+  uploadImageProfile.single("profileImage"),
   UserCtrl.UsersSignup
 )
 
@@ -23,7 +24,7 @@ router.post(
   "/me",
   cors({ methods: "POST" }),
   auth,
-  uploadImageProfile.single("image"),
+  uploadImageProfile.single("profileImage"),
   UserCtrl.UsersMePost
 )
 
