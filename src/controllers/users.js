@@ -1,13 +1,13 @@
-const resp = require('../modules/responses')
-const regexInputs = require('../modules/regexInputs')
-const hash = require('../middlewares/hash')
-const { PrismaClient } = require('@prisma/client')
+const resp = require("../modules/responses")
+const regexInputs = require("../modules/regexInputs")
+const hash = require("../middlewares/hash")
+const { PrismaClient } = require("@prisma/client")
 const prisma = new PrismaClient()
 const { user: User } = prisma
 
 // Signup and login part
 exports.UsersSignup = async (req, res) => {
-  console.log('Signup request received')
+  console.log("Signup request received")
   // Vérifier si le contenu account n'est pas vide dans un premier temps
   try {
     const account = JSON.parse(req.body.account)
@@ -19,10 +19,10 @@ exports.UsersSignup = async (req, res) => {
       !account.firstName
     )
       return resp.badRequest(
-        'Il manque des informations pour vous enregistrer. Veuillez bien fournir tout les champs.',
+        "Il manque des informations pour vous enregistrer. Veuillez bien fournir tout les champs.",
         res
       )
-    if (!req.file) return resp.badRequest('Veuillez ajouter une image', res)
+    if (!req.file) return resp.badRequest("Veuillez ajouter une image", res)
 
     const { email, password, firstName, lastName } = account
     console.log({ email, password, firstName, lastName })
@@ -46,7 +46,7 @@ exports.UsersSignup = async (req, res) => {
       )
     if (!passwordIsValid)
       return resp.badRequest(
-        'Le mot de passe doit être au minimum de 8 caractères comprenant un caractère spécial, un chiffre, une lettre majuscule.',
+        "Le mot de passe doit être au minimum de 8 caractères comprenant un caractère spécial, un chiffre, une lettre majuscule.",
         res
       )
     if (!firstNameIsValid)
@@ -63,7 +63,7 @@ exports.UsersSignup = async (req, res) => {
     console.log({ userFindUniqueByEmail })
     if (userFindUniqueByEmail)
       return resp.badRequest(
-        'Le compte avec cette adresse email existe déjà. Veuillez vous connecter.',
+        "Le compte avec cette adresse email existe déjà. Veuillez vous connecter.",
         res
       )
     if (!userFindUniqueByEmail) {
@@ -73,28 +73,28 @@ exports.UsersSignup = async (req, res) => {
           lastName: lastName,
           email: email,
           password: await hash.gen(password),
-          imageProfile: `${req.protocol}://${req.get('host')}/images/${
+          imageProfile: `${req.protocol}://${req.get("host")}/images/profiles/${
             req.file.filename
           }`,
         },
       })
-      resp.success('Compte créé avec succès', res)
+      resp.created("Compte créé avec succès", res)
     }
   } catch (error) {
     console.log({ error })
     resp.badRequest(
-      'Veuillez bien remplir vos données de compte utilisateur.',
+      "Veuillez bien remplir vos données de compte utilisateur.",
       res
     )
   }
 }
 
 exports.UsersLogin = async (req, res) => {
-  console.log('Login request received')
+  console.log("Login request received")
   const { email, password } = req.body
   console.log({ email, password })
   if (!email || !password)
-    return resp.badRequest('Veuillez remplir tous les champs', res)
+    return resp.badRequest("Veuillez remplir tous les champs", res)
   const userFindUniqueByEmail = await prisma.user.findUnique({
     where: { email: email },
   })
@@ -109,27 +109,26 @@ exports.UsersLogin = async (req, res) => {
     userFindUniqueByEmail.password
   )
   if (!passwordIsValid)
-    return resp.badRequest('Lse mot de passe est incorrect', res)
+    return resp.badRequest("Lse mot de passe est incorrect", res)
   // On génère un token
   // TODO : Input MemorizeMe pour le front
   const token = await hash.genToken(userFindUniqueByEmail)
   console.log({ token })
   res.status(200).json({
-    message: 'Connexion réussie',
+    message: "Connexion réussie",
     token: token,
   })
 }
 
 // Me part
 exports.UsersMeGet = async (req, res) => {
-  console.log('Get user request received')
-  console.log({ user: req.user })
+  console.log("Get user request received")
   const allDataOfUser = req.user
   // On met user dans un objet pour pouvoir le modifier
   const userObject = { ...allDataOfUser }
 
   // ajout d'un message
-  userObject.message = 'Informations utilisateur récupérées avec succès'
+  userObject.message = "Informations utilisateur récupérées avec succès"
 
   // On supprime certaines informations de l'utilisateur
   delete userObject.user.password
@@ -141,15 +140,89 @@ exports.UsersMeGet = async (req, res) => {
   // On renvoie l'objet
   resp.success(userObject, res)
 }
-exports.UsersMePut = async (req, res) => {
-  console.log('Update user request received')
-  resp.success('Good', res)
+
+exports.UsersMePost = async (req, res) => {
+  console.log("Update user request received")
+  let informationsEdited = []
+  // On vérifie si le contenu account.firstName n'est pas vide
+  if (req.body.account) {
+    const account = JSON.parse(req.body.account)
+
+    const { firstName, lastName } = account
+    if (account.firstName) {
+      // On vérifie si le prénom est valide
+      const firstNameIsValid = regexInputs.checkText(firstName)
+      if (firstNameIsValid) {
+        // On met à jour le prénom
+        await prisma.user.update({
+          where: { id: req.user.user.id },
+          data: { firstName: firstName },
+        })
+        informationsEdited.push("Le prénom")
+      }
+    }
+
+    if (account.lastName) {
+      // On vérifie si le nom est valide
+      const lastNameIsValid = regexInputs.checkText(lastName)
+      if (lastNameIsValid) {
+        // On met à jour le nom
+        console.log({ id: req.user.user.id })
+        await prisma.user.update({
+          where: { id: req.user.user.id },
+          data: { lastName: lastName },
+        })
+        informationsEdited.push("Le nom")
+      }
+    }
+  }
+
+  if (req.file) {
+    // On met à jour l'image de profil
+    await prisma.user.update({
+      where: { id: req.user.user.id },
+      data: {
+        imageProfile: `${req.protocol}://${req.get("host")}/images/profiles/${
+          req.file.filename
+        }`,
+      },
+    })
+    informationsEdited.push("L'image de profil")
+  }
+  // On renvoie les informations modifiées
+  if (informationsEdited.length === 0) {
+    return resp.badRequest("Aucune information n'a été modifiée", res)
+  }
+  if (informationsEdited.length <= 1) {
+    return resp.success(`${informationsEdited} a été modifiée.`, res)
+  }
+  if (informationsEdited.length > 1 && informationsEdited.length < 3) {
+    function ajoutVirgule(informationsEdited) {
+      informationsEdited.splice(informationsEdited.length - 1, 0, "et")
+      // remplace les virgules par des espaces ainsi que les majuscules par des minuscules
+      informationsEdited = informationsEdited.join(" ").toLowerCase()
+      return informationsEdited
+    }
+    return resp.success(
+      `Les informations suivantes ont été modifiées : ${ajoutVirgule(
+        informationsEdited
+      )}.`,
+      res
+    )
+  }
+  if (informationsEdited.length >= 3) {
+    return resp.success(
+      `Les informations suivantes ont été modifiées : le prénom, le nom et l'image de profil.`,
+      res
+    )
+  }
 }
+
 exports.UsersMeDelete = async (req, res) => {
-  console.log('Delete user request received')
-  resp.success('Good', res)
+  console.log("Delete user request received")
+  resp.success("Good", res)
 }
 exports.UsersSecurity = async (req, res) => {
-  console.log('Security user request received')
-  resp.success('Good', res)
+  console.log("Security user request received")
+  resp.success("Good", res)
 }
