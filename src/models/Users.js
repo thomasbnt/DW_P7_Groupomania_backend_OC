@@ -1,6 +1,6 @@
-const { PrismaClient } = require('@prisma/client')
+const { PrismaClient } = require("@prisma/client")
 const prisma = new PrismaClient()
-const { hash } = require('bcrypt')
+const { hash } = require("bcrypt")
 
 prisma.user.create({
   data: {

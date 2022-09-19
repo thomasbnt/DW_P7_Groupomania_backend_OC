@@ -1,18 +1,18 @@
-const resp = require('../modules/responses')
-const jwt = require('jsonwebtoken')
+const resp = require("../modules/responses")
+const jwt = require("jsonwebtoken")
 
 module.exports = (req, res, next) => {
   try {
-    const authHeader = req.headers['authorization']
-    const token = authHeader && authHeader.split(' ')[1]
+    const authHeader = req.headers["authorization"]
+    const token = authHeader && authHeader.split(" ")[1]
 
     // Si le token n'est pas présent, on renvoie une erreur
     if (token === null)
-      return resp.invalidCredentials('Invalid credentials', res)
+      return resp.invalidCredentials("Invalid credentials", res)
 
     // On décode le token
     jwt.verify(token, process.env.JWT_SECRET_KEY, (err, user) => {
-      if (err) return resp.forbidden('Forbidden.', res)
+      if (err) return resp.forbidden("Forbidden.", res)
       req.user = user
       next()
     })

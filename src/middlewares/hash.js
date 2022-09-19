@@ -1,5 +1,5 @@
-const bcrypt = require('bcrypt')
-const jwt = require('jsonwebtoken')
+const bcrypt = require("bcrypt")
+const jwt = require("jsonwebtoken")
 const salt = bcrypt.genSaltSync(10)
 class Hash {
   // hash password
