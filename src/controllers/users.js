@@ -182,6 +182,7 @@ exports.UsersMePost = async (req, res) => {
       }
     }
   }
+  console.log({ file: req.file })
 
   if (req.file) {
     // On met à jour l'image de profil
@@ -195,6 +196,7 @@ exports.UsersMePost = async (req, res) => {
     })
     informationsEdited.push("L'image de profil")
   }
+
   // On renvoie les informations modifiées
   if (informationsEdited.length === 0) {
     return resp.badRequest("Aucune information n'a été modifiée", res)
@@ -209,6 +211,7 @@ exports.UsersMePost = async (req, res) => {
       informationsEdited = informationsEdited.join(" ").toLowerCase()
       return informationsEdited
     }
+
     return resp.success(
       `Les informations suivantes ont été modifiées : ${ajoutVirgule(
         informationsEdited
@@ -226,7 +229,15 @@ exports.UsersMePost = async (req, res) => {
 
 exports.UsersMeDelete = async (req, res) => {
   console.log("Delete user request received")
-  resp.success("Good", res)
+  // On supprime l'utilisateur
+  try {
+    await prisma.user.delete({
+      where: { id: req.user.user.id },
+    })
+    resp.success("Votre compte a été supprimé avec succès", res)
+  } catch (error) {
+    resp.badRequest("L'utilisateur n'existe pas/plus.", res)
+  }
 }
 exports.UsersSecurity = async (req, res) => {
   console.log("Security user request received")
