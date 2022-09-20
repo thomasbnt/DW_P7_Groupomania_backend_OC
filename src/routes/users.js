@@ -5,7 +5,6 @@ const cors = require("cors")
 const UserCtrl = require("../controllers/users")
 const uploadImageProfile = require("../middlewares/multerImagesProfiles")
 const auth = require("../middlewares/authenticateToken")
-const res = require("express/lib/response")
 
 // Signup
 router.post(
