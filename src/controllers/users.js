@@ -3,7 +3,6 @@ const regexInputs = require("../modules/regexInputs")
 const hash = require("../middlewares/hash")
 const { PrismaClient } = require("@prisma/client")
 const prisma = new PrismaClient()
-const { user: User } = prisma
 
 // Signup and login part
 exports.UsersSignup = async (req, res) => {
