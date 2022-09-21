@@ -1,0 +1,10 @@
+{
+  "recommendations": [
+    "IronGeek.vscode-env",
+    "Prisma.prisma",
+    "esbenp.prettier-vscode",
+    "formulahendry.vscode-mysql",
+    "waderyan.nodejs-extension-pack",
+    "amandeepmittal.expressjs"
+  ]
+}
