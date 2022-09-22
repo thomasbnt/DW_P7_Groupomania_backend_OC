@@ -289,7 +289,6 @@ exports.UsersSecurity = async (req, res) => {
     }
   }
 
-  console.log({ changedActions })
   if (changedActions.length === 0) {
     return resp.badRequest("Aucune information n'a été modifiée", res)
   }
