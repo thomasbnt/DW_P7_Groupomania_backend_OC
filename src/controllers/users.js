@@ -122,7 +122,7 @@ exports.UsersLogin = async (req, res) => {
       "Vous ne pouvez pas vous connecter à votre compte.",
       res
     )
-  // TODO : Input MemorizeMe pour le front
+  // TODO #2 : Input MemorizeMe pour le front
   // On génère un token
   const token = await hash.genToken(userFindUniqueByEmail)
   res.status(200).json({

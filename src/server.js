@@ -25,9 +25,11 @@ const errorHandler = (error) => {
     case "EACCES":
       console.error(bind + " requires elevated privileges.")
       process.exit(1)
+    // eslint-disable-next-line no-fallthrough
     case "EADDRINUSE":
       console.error(bind + " is already in use.")
       process.exit(1)
+    // eslint-disable-next-line no-fallthrough
     default:
       throw error
   }
