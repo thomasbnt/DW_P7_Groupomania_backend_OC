@@ -4,7 +4,14 @@ const hash = require("../middlewares/hash")
 const { PrismaClient } = require("@prisma/client")
 const prisma = new PrismaClient()
 
-// Signup and login part
+function ajoutVirgule(informationsEdited) {
+  informationsEdited.splice(informationsEdited.length - 1, 0, "et")
+  // remplace les virgules par des espaces ainsi que les majuscules par des minuscules
+  informationsEdited = informationsEdited.join(" ").toLowerCase()
+  return informationsEdited
+}
+
+// Signup
 exports.UsersSignup = async (req, res) => {
   console.log("Signup request received")
   // Vérifier si le contenu account n'est pas vide dans un premier temps
@@ -88,10 +95,10 @@ exports.UsersSignup = async (req, res) => {
   }
 }
 
+// Login
 exports.UsersLogin = async (req, res) => {
   console.log("Login request received")
   const { email, password } = req.body
-  console.log({ email, password })
   if (!email || !password)
     return resp.badRequest("Veuillez remplir tous les champs", res)
   const userFindUniqueByEmail = await prisma.user.findUnique({
@@ -108,7 +115,7 @@ exports.UsersLogin = async (req, res) => {
     userFindUniqueByEmail.password
   )
   if (!passwordIsValid)
-    return resp.badRequest("Lse mot de passe est incorrect", res)
+    return resp.badRequest("Le mot de passe est incorrect", res)
   // Vérifier si l'user est banni
   if (userFindUniqueByEmail.banned)
     return resp.badRequest(
@@ -118,10 +125,9 @@ exports.UsersLogin = async (req, res) => {
   // TODO : Input MemorizeMe pour le front
   // On génère un token
   const token = await hash.genToken(userFindUniqueByEmail)
-  console.log({ token })
   res.status(200).json({
     message: "Connexion réussie",
-    token: token,
+    session_token: token,
   })
 }
 
@@ -204,13 +210,6 @@ exports.UsersMePost = async (req, res) => {
     return resp.success(`${informationsEdited} a été modifiée.`, res)
   }
   if (informationsEdited.length > 1 && informationsEdited.length < 3) {
-    function ajoutVirgule(informationsEdited) {
-      informationsEdited.splice(informationsEdited.length - 1, 0, "et")
-      // remplace les virgules par des espaces ainsi que les majuscules par des minuscules
-      informationsEdited = informationsEdited.join(" ").toLowerCase()
-      return informationsEdited
-    }
-
     return resp.success(
       `Les informations suivantes ont été modifiées : ${ajoutVirgule(
         informationsEdited
@@ -246,7 +245,6 @@ exports.UsersSecurity = async (req, res) => {
   if (req.body.newPassword) {
     // On vérifie si le mot de passe est valide
     const passwordIsValid = regexInputs.checkPassword(req.body.newPassword)
-    console.log({ passwordIsValid })
     if (passwordIsValid) {
       // On hash le mot de passe
       const passwordHashed = await hash.gen(req.body.newPassword)
@@ -296,13 +294,6 @@ exports.UsersSecurity = async (req, res) => {
     return resp.success(`${changedActions} a été modifié.`, res)
   }
   if (changedActions.length > 1 && changedActions.length < 3) {
-    function ajoutVirgule(changedActions) {
-      changedActions.splice(changedActions.length - 1, 0, "et")
-      // remplace les virgules par des espaces ainsi que les majuscules par des minuscules
-      changedActions = changedActions.join(" ").toLowerCase()
-      return changedActions
-    }
-
     return resp.success(
       `Les informations suivantes ont été modifiées : ${ajoutVirgule(
         changedActions
