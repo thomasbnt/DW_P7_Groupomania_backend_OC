@@ -1,4 +1,3 @@
-const resp = require("../modules/responses")
 const { PrismaClient } = require("@prisma/client")
 const prisma = new PrismaClient()
 
