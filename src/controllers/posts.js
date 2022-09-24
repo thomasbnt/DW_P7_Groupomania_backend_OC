@@ -61,16 +61,16 @@ exports.PostsGetAll = async (req, res) => {
     // On récupère tous les posts
     const posts = await Post.findMany({
       // On affiche les informations d'userId sauf les mots de passe
-     /* include: {
-        author: {
-          select: {
-            id: true,
-            firstName: true,
-            lastName: true,
-            imageProfile: true
-          }
-        }
-      },*/
+      /* include: {
+         author: {
+           select: {
+             id: true,
+             firstName: true,
+             lastName: true,
+             imageProfile: true
+           }
+         }
+       },*/
       orderBy: {
         createdAt: "desc"
       }
@@ -211,5 +211,25 @@ exports.PostsUpdateOne = async (req, res) => {
 // Supprimer un seul post
 exports.PostsDeleteOne = async (req, res) => {
   console.log("PostsDeleteOne request received");
-  resp.success("[DELETE UN POST]", res);
+  // On récupère l'id du post
+  const id = parseInt(req.params.id);
+  // On vérifie si l'id est valide
+  if (!id) return resp.badRequest("L'id du post n'est pas valide", res);
+  // On vérifie si l'auteur du post est l'utilisateur connecté
+  const post = await prisma.post.findUnique({
+    where: { id: id },
+    select: {
+      userId: true
+    }
+  });
+  if (post.userId !== req.user.user.id)
+    return resp.forbidden("Vous n'êtes pas l'auteur du post", res);
+  // On supprime le post
+  try {
+    await Post.delete({ where: { id: id } });
+    res.status(200).json({ message: "Le post a bien été supprimé" });
+  } catch (error) {
+    resp.internalError("Une erreur est survenue", res);
+  }
 };
+
