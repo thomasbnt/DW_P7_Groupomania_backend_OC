@@ -21,14 +21,17 @@ model User {
   role      Role     @default(USER)
   imageProfile String @db.VarChar(255)
   banned   Boolean  @default(false)
+  posts Post[]
 }
 
 model Post {
-  id        Int      @id @default(autoincrement())
-  createdAt DateTime @default(now())
-  text      String   @db.VarChar(255)
-  userId  Int
-  image String? @db.VarChar(255)
+  id        Int                    @id @default(autoincrement())
+  createdAt DateTime   @default(now())
+  text      String              @db.VarChar(255)
+  author   User               @relation(fields: [userId], references: [id])
+  userId  Int                   
+  image String?             @db.VarChar(255)
+  altText String?             @db.VarChar(255)
 }
 
 enum Role {
