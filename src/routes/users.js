@@ -19,12 +19,12 @@ router.post("/login", cors({ methods: "POST" }), UserCtrl.UsersLogin)
 
 // Me
 router.get("/me", cors({ methods: "GET" }), auth, UserCtrl.UsersMeGet)
-router.post(
+router.put(
   "/me",
-  cors({ methods: "POST" }),
+  cors({ methods: "PUT" }),
   auth,
   uploadImageProfile.single("profileImage"),
-  UserCtrl.UsersMePost
+  UserCtrl.UsersMePut
 )
 
 // Security
