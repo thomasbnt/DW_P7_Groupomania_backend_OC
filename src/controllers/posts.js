@@ -214,7 +214,7 @@ exports.PostsDeleteOne = async (req, res) => {
   // On récupère l'id du post
   const id = parseInt(req.params.id);
   // On vérifie si l'id est valide
-  if (!id) return resp.badRequest("L'id du post n'est pas valide", res);
+  if (!id) return resp.badRequest("L'ID du post n'est pas valide", res);
   // On vérifie si l'auteur du post est l'utilisateur connecté
   const post = await prisma.post.findUnique({
     where: { id: id },
