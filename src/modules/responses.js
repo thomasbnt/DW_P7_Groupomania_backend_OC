@@ -29,9 +29,9 @@ class Responses {
     })
   }
 
-  notFound(res) {
+  notFound(msg, res) {
     return res.status(404).json({
-      error: "Not found",
+      error: msg,
     })
   }
 
