@@ -18,8 +18,6 @@ const storage = multerImagesProfiles.diskStorage({
     cb(null, "src/images/profiles")
   },
   filename: (req, file, cb) => {
-    console.log({ file })
-    console.log({ cb })
     cb(
       null,
       `${getFileNameWithoutExtension(file.originalname)}-${+Date.now()}.${
