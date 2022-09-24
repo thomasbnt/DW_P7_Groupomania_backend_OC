@@ -152,13 +152,12 @@ exports.UsersMeGet = async (req, res) => {
   resp.success(userObject, res)
 }
 
-exports.UsersMePost = async (req, res) => {
+exports.UsersMePut = async (req, res) => {
   console.log("Update user request received")
   let informationsEdited = []
   // On vérifie si le contenu account.firstName n'est pas vide
   if (req.body.account) {
     const account = JSON.parse(req.body.account)
-
     const { firstName, lastName } = account
     if (account.firstName) {
       // On vérifie si le prénom est valide
@@ -178,7 +177,6 @@ exports.UsersMePost = async (req, res) => {
       const lastNameIsValid = regexInputs.checkText(lastName)
       if (lastNameIsValid) {
         // On met à jour le nom
-        console.log({ id: req.user.user.id })
         await prisma.user.update({
           where: { id: req.user.user.id },
           data: { lastName: lastName },
@@ -187,19 +185,22 @@ exports.UsersMePost = async (req, res) => {
       }
     }
   }
-  console.log({ file: req.file })
 
   if (req.file) {
     // On met à jour l'image de profil
-    await prisma.user.update({
-      where: { id: req.user.user.id },
-      data: {
-        imageProfile: `${req.protocol}://${req.get("host")}/images/profiles/${
-          req.file.filename
-        }`,
-      },
-    })
-    informationsEdited.push("L'image de profil")
+    try {
+      await prisma.user.update({
+        where: { id: req.user.user.id },
+        data: {
+          imageProfile: `${req.protocol}://${req.get("host")}/images/profiles/${
+            req.file.filename
+          }`,
+        },
+      })
+      informationsEdited.push("L'image de profil")
+    } catch (error) {
+      console.log({ error })
+    }
   }
 
   // On renvoie les informations modifiées
