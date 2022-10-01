@@ -61,7 +61,7 @@ exports.PostsGetAll = async (req, res) => {
     // On récupère tous les posts
     const posts = await Post.findMany({
       // On affiche les informations d'userId sauf les mots de passe
-      /* include: {
+      include: {
          author: {
            select: {
              id: true,
@@ -70,7 +70,7 @@ exports.PostsGetAll = async (req, res) => {
              imageProfile: true
            }
          }
-       },*/
+       },
       orderBy: {
         createdAt: "desc"
       }
