@@ -15,7 +15,7 @@
     "url": "git+https://github.com/thomasbnt/DW_P6_Hot_Takes_backend_OC.git"
   },
   "dependencies": {
-    "@prisma/client": "^4.3.1",
+    "@prisma/client": "^4.4.0",
     "bcrypt": "^5.0.1",
     "cors": "^2.8.5",
     "dotenv": "^16.0.1",
