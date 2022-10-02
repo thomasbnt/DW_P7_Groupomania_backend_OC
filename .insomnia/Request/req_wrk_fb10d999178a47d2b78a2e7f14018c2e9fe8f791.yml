@@ -1,24 +1,20 @@
-_id: req_wrk_fb10d999178a47d2b78a2e7f14018c2ec372a0e6
+_id: req_wrk_fb10d999178a47d2b78a2e7f14018c2e9fe8f791
 type: Request
 parentId: fld_wrk_fb10d999178a47d2b78a2e7f14018c2e87e38948
-modified: 1664278528128
-created: 1662994414692
-url: "{{ base_url }}/posts/{{ :id }}"
+modified: 1664734686764
+created: 1664734513438
+url: "{{ base_url }}/posts/{{ id }}"
 name: Supprimer un post
 description: ""
 method: DELETE
 body: {}
 parameters: []
-headers:
-  - name: bearer_token
-    disabled: false
-    value: "{{ bearerToken }}"
-    id: pair_9345d24105354922afbe840f7bedaa64
+headers: []
 authentication:
   type: bearer
-  token: "{{bearerToken}}"
+  token: "{{ _.bearertoken }}"
   prefix: ""
-metaSortKey: -1662994414692
+metaSortKey: -1662994414644.5
 isPrivate: false
 settingStoreCookies: true
 settingSendCookies: true

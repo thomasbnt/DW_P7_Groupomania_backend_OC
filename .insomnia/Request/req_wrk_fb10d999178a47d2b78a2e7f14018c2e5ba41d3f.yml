@@ -1,9 +1,9 @@
-_id: req_wrk_fb10d999178a47d2b78a2e7f14018c2e1de75134
+_id: req_wrk_fb10d999178a47d2b78a2e7f14018c2e5ba41d3f
 type: Request
 parentId: fld_wrk_fb10d999178a47d2b78a2e7f14018c2e87e38948
-modified: 1664729252621
-created: 1662994414694
-url: "{{ base_url }}/posts/3"
+modified: 1664734687439
+created: 1664734513439
+url: "{{ base_url }}/posts/{{ id }}"
 name: Avoir un seul post
 description: ""
 method: GET
@@ -14,7 +14,7 @@ authentication:
   type: bearer
   token: "{{ _.bearertoken }}"
   prefix: ""
-metaSortKey: -1663307221373
+metaSortKey: -1663463624712
 isPrivate: false
 settingStoreCookies: true
 settingSendCookies: true

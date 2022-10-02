@@ -1,7 +1,7 @@
 _id: req_wrk_fb10d999178a47d2b78a2e7f14018c2e0c6fc6eb
 type: Request
 parentId: fld_wrk_fb10d999178a47d2b78a2e7f14018c2e87e38948
-modified: 1664729084939
+modified: 1664734688307
 created: 1662994414698
 url: "{{ base_url }}/posts"
 name: Créer un nouveau post
