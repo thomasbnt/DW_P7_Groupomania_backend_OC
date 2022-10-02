@@ -1,7 +1,7 @@
 _id: spc_81427024916441f4b3aeef2da642bb29
 type: ApiSpec
 parentId: wrk_fb10d999178a47d2b78a2e7f14018c2e
-modified: 1664729392450
+modified: 1664730216804
 created: 1662047421048
 fileName: OCDWP7OpenAPI.yaml
 contents: >-
@@ -244,7 +244,14 @@ contents: >-
                           items:
                             type: string
                             example: "12345678901234567890"                     
-    /posts/{:id}:
+    "/posts/{id}":
+      parameters:
+      - name: id
+        in: path
+        description: ID du post
+        required: true
+        schema:
+          type: number
       put:
         tags:
           - posts
