@@ -18,10 +18,10 @@ jobs:
         if: steps.swagger-ui.outputs.current_tag != steps.swagger-ui.outputs.release_tag
         env:
           RELEASE_TAG: ${{ steps.swagger-ui.outputs.release_tag }}
-          SWAGGER_YAML: "docs/swagger.yaml"
+          SWAGGER_YAML: "swagger.yaml"
         run: |
           # Delete the docs directory and index.html
-          rm -fr docs/index.html
+          rm -fr docs index.html
           # Download the release
           curl -sL -o $RELEASE_TAG https://api.github.com/repos/swagger-api/swagger-ui/tarball/$RELEASE_TAG
           # Extract the docs directory
