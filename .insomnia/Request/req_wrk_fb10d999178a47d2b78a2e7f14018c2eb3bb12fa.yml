@@ -1,7 +1,7 @@
 _id: req_wrk_fb10d999178a47d2b78a2e7f14018c2eb3bb12fa
 type: Request
 parentId: fld_wrk_fb10d999178a47d2b78a2e7f14018c2e87e38948
-modified: 1662994414697
+modified: 1664278525532
 created: 1662994414697
 url: "{{ base_url }}/posts"
 name: Avoir tous les posts
@@ -9,15 +9,12 @@ description: ""
 method: GET
 body: {}
 parameters: []
-headers:
-  - name: bearer_token
-    disabled: false
-    value: "{{ bearerToken }}"
+headers: []
 authentication:
   type: bearer
-  token: "{{bearerToken}}"
+  token: "{{ _.bearertoken }}"
   prefix: ""
-metaSortKey: -1662994414697
+metaSortKey: -1663620028051
 isPrivate: false
 settingStoreCookies: true
 settingSendCookies: true

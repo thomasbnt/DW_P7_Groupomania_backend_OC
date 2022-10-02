@@ -1,7 +1,7 @@
 _id: req_wrk_fb10d999178a47d2b78a2e7f14018c2e1b098573
 type: Request
 parentId: fld_wrk_fb10d999178a47d2b78a2e7f14018c2e5b7dcd14
-modified: 1663627376999
+modified: 1664278518273
 created: 1662994414699
 url: "{{ base_url }}/users/security"
 name: Modifier son mot de passe et/ou son adresse email
@@ -11,7 +11,8 @@ body:
   mimeType: application/json
   text: |
     {
-    	"newEmail": "contact@tthomas.fr"
+    	"newEmail": "contact@thomasbnt.fr",
+    	"newPassword": "MyAweso?me.Passw0rd"
       }
 parameters: []
 headers:

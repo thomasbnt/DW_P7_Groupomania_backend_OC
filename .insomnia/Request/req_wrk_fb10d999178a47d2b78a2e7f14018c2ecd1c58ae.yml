@@ -1,7 +1,7 @@
 _id: req_wrk_fb10d999178a47d2b78a2e7f14018c2ecd1c58ae
 type: Request
 parentId: fld_wrk_fb10d999178a47d2b78a2e7f14018c2e5b7dcd14
-modified: 1663620659465
+modified: 1664278510949
 created: 1662303282704
 url: "{{ base_url }}/users/me"
 name: Obtenir ses informations de profil public
@@ -9,14 +9,10 @@ description: ""
 method: GET
 body: {}
 parameters: []
-headers:
-  - name: bearer_token
-    disabled: false
-    value: "{{ bearerToken }}"
-    id: pair_0753c1a592344f0c88b13527a9931ebe
+headers: []
 authentication:
   type: bearer
-  token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoxMywiY3JlYXRlZEF0IjoiMjAyMi0wOS0xOVQxNjo0NDo0MS4yNTVaIiwiZW1haWwiOiJjb250YWN0QHRob21hc2JudC5mciIsInBhc3N3b3JkIjoiJDJiJDEwJFhJLnZCNDlRUXZ6Q0pNeDNrMG5qbGU3N0VIZkd5SG01UFFHekRjSlFjSGhWeDhoalJwZ2ZxIiwiZmlyc3ROYW1lIjoiVGhvbWFzIiwibGFzdE5hbWUiOiJCbnQiLCJyb2xlIjoiQURNSU4iLCJpbWFnZVByb2ZpbGUiOiJodHRwOi8vbG9jYWxob3N0OjMwMDAvaW1hZ2VzL3Byb2ZpbGVzLzE0NTUxNDU2LTE2NjM2MDY5MDExMTIuZ2lmIiwiYmFubmVkIjpmYWxzZX0sImlhdCI6MTY2MzYxOTA1OX0.emyi0B0h7jAyFfXtPIl3uHvoOuvImp8cGJnuZSnWXqg
+  token: "{{ _.bearertoken }}"
   prefix: ""
   disabled: false
 metaSortKey: -1662994414703

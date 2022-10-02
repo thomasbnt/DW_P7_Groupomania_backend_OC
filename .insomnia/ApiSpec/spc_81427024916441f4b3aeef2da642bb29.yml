@@ -1,7 +1,7 @@
 _id: spc_81427024916441f4b3aeef2da642bb29
 type: ApiSpec
 parentId: wrk_fb10d999178a47d2b78a2e7f14018c2e
-modified: 1663627033431
+modified: 1664729392450
 created: 1662047421048
 fileName: OCDWP7OpenAPI.yaml
 contents: >-
@@ -106,7 +106,7 @@ contents: >-
             description: Invalid username supplied
           "404":
             description: User not found
-      post:
+      put:
         tags:
           - users
         summary: "Editer les informations du compte connecté"
@@ -137,18 +137,6 @@ contents: >-
           "404":
             description: User not found
     /users/security:
-      delete:
-        tags:
-          - users
-        summary: "Supprimer son compte"
-        operationId: deleteUser
-        security:
-        - bearerAuth: []
-        responses:
-          "200": 
-            description: "Votre compte a bien été supprimé"
-          "404":
-            description: "Utilisateur non trouvé"
       post:
         tags:
           - users
@@ -170,6 +158,18 @@ contents: >-
                   properties:
                     success:
                       type: string
+      delete:
+        tags:
+          - users
+        summary: "Supprimer son compte"
+        operationId: deleteUser
+        security:
+        - bearerAuth: []
+        responses:
+          "200": 
+            description: "Votre compte a bien été supprimé"
+          "404":
+            description: "Utilisateur non trouvé"
                     
     /posts:
       post:
@@ -180,7 +180,7 @@ contents: >-
         - bearerAuth: []
         requestBody:
           content:
-            application/json:
+            multipart/form-data:
               schema:
                 type: object
                 properties:
@@ -191,6 +191,9 @@ contents: >-
                         type: string
                       altText:
                         type: string
+                  image:
+                    type: string
+                    format: base64
               encoding:
                 image:
                   contentType: image/png, image/jpeg
@@ -213,35 +216,36 @@ contents: >-
             content:
               application/json:
                 schema:
-                  type: array
-                  items:
-                    type: object
-                    properties:
-                      id:
-                        type: number
-                        example: 39483910293847584930
-                      acountId:
-                        type: number
-                        example: 12345678901234567890
-                      text:
-                        type: string
-                        example: "Super cool post sur les cheveaux"
-                      image:
-                        type: string
-                        example: "http://localhost:3000/posts/images/supercoolimage_1661445600.png"
-                      altText:
-                        type: string
-                        example: "Un cheval"
-                      createdAt:
-                        type: number
-                        example: 1661445600
-                      accountLiked:
-                        type: array
-                        items:
+                  type: object
+                  properties:
+                    items:
+                      type: object
+                      properties:    
+                        id:
+                          type: number
+                          example: 39483910293847584930
+                        acountId:
+                          type: number
+                          example: 12345678901234567890
+                        text:
                           type: string
-                          example: "12345678901234567890"                     
+                          example: "Super cool post sur les cheveaux"
+                        image:
+                          type: string
+                          example: "http://localhost:3000/posts/images/supercoolimage_1661445600.png"
+                        altText:
+                          type: string
+                          example: "Un cheval"
+                        createdAt:
+                          type: number
+                          example: 1661445600
+                        accountLiked:
+                          type: array
+                          items:
+                            type: string
+                            example: "12345678901234567890"                     
     /posts/{:id}:
-      post:
+      put:
         tags:
           - posts
         summary: "Éditer un post"
@@ -249,7 +253,7 @@ contents: >-
         - bearerAuth: []
         requestBody:
           content:
-            application/json:
+            multipart/form-data:
               schema:
                 type: object
                 properties:
@@ -262,6 +266,9 @@ contents: >-
                       altText:
                         type: string
                         example: "Un beau cheval"
+                  image:
+                        type: string
+                        format: base64
               encoding:
                 image:
                   contentType: image/png, image/jpeg

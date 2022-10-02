@@ -1,33 +1,35 @@
 _id: req_wrk_fb10d999178a47d2b78a2e7f14018c2e0c6fc6eb
 type: Request
 parentId: fld_wrk_fb10d999178a47d2b78a2e7f14018c2e87e38948
-modified: 1662994414698
+modified: 1664729084939
 created: 1662994414698
 url: "{{ base_url }}/posts"
 name: Créer un nouveau post
 description: ""
 method: POST
 body:
-  mimeType: application/json
-  text: |-
-    {
-      "content": {
-        "text": "string",
-        "altText": "string"
-      }
-    }
+  mimeType: multipart/form-data
+  params:
+    - name: content
+      value: '{    "text": "Pi-hole sur un Raspbian avec écran LCD",    "altText": "Un
+        Raspberry Pi avec un écran LCD affichant Pi-hole"  }'
+      id: pair_2776708853994715b63a5751180c7378
+    - id: pair_a6ce9e8b50524133882cb16e9de4f18f
+      name: image
+      value: ""
+      description: ""
+      type: file
+      fileName: C:\Users\thomasbnt\Pictures\InkedIMG_20220613_174805_LI.jpg
 parameters: []
 headers:
-  - name: bearer_token
-    value: "{{ bearerToken }}"
-    disabled: false
   - name: Content-Type
-    value: application/json
+    value: multipart/form-data
+    id: pair_af076bc5b5054408b0b9f8e2221420cf
 authentication:
   type: bearer
-  token: "{{bearerToken}}"
+  token: "{{ _.bearertoken }}"
   prefix: ""
-metaSortKey: -1662994414698
+metaSortKey: -1663620028076
 isPrivate: false
 settingStoreCookies: true
 settingSendCookies: true

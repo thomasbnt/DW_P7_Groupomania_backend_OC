@@ -1,30 +1,37 @@
 _id: req_wrk_fb10d999178a47d2b78a2e7f14018c2e77fa05b2
 type: Request
 parentId: fld_wrk_fb10d999178a47d2b78a2e7f14018c2e87e38948
-modified: 1663620028026
+modified: 1664729313307
 created: 1663620028026
-url: "{{ base_url }}/posts/{{ :id }}"
+url: "{{ base_url }}/posts/3"
 name: Éditer un post
 description: ""
-method: POST
+method: PUT
 body:
-  mimeType: application/json
-  text: |-
-    {
-      "content": {
-        "text": "Voici un cheval dans une prairie",
-        "altText": "Un beau cheval"
-      }
-    }
+  mimeType: multipart/form-data
+  params:
+    - name: content
+      value: '{ "text": "Voici un cheval dans une prairie",    "altText": "Un beau
+        cheval"  }'
+      id: pair_b963f9272a43420c9557e814a87aeca7
+      disabled: false
+    - id: pair_244c76fb316a490cbb121f4bcc4e738a
+      name: image
+      value: ""
+      description: ""
+      type: file
+      disabled: false
+      fileName: C:\Users\thomasbnt\Pictures\photo-1618005182384-a83a8bd57fbe.jpg
 parameters: []
 headers:
   - name: Content-Type
-    value: application/json
+    value: multipart/form-data
+    id: pair_7326bca66e1645729f62123360bd6419
 authentication:
   type: bearer
-  token: "{{bearerToken}}"
+  token: "{{ _.bearertoken }}"
   prefix: ""
-metaSortKey: -1663620028026
+metaSortKey: -1662994414694.5
 isPrivate: false
 settingStoreCookies: true
 settingSendCookies: true
