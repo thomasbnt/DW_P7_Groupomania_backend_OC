@@ -3,6 +3,8 @@ const regexInputs = require("../modules/regexInputs")
 const hash = require("../middlewares/hash")
 const { PrismaClient } = require("@prisma/client")
 const prisma = new PrismaClient()
+const { post: Post, user: User, reaction: Reaction } = prisma;
+
 
 function ajoutVirgule(informationsEdited) {
   informationsEdited.splice(informationsEdited.length - 1, 0, "et")
@@ -230,8 +232,16 @@ exports.UsersMeDelete = async (req, res) => {
   console.log("Delete user request received")
   // On supprime l'utilisateur
   try {
-    await prisma.user.delete({
+    await User.delete({
       where: { id: req.user.user.id },
+    })
+    // On supprime tout les posts créée par ce compte
+    await Post.deleteMany({
+      where: { userId: req.user.user.id },
+    })
+    // On supprime toutes les réactions créé par ce compte
+    await Reaction.deleteMany({
+      where: { userId: req.user.user.id },
     })
     resp.success("Votre compte a été supprimé avec succès", res)
   } catch (error) {

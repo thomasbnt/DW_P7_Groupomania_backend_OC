@@ -11,7 +11,7 @@ router.post(
   "/",
   cors({ methods: "POST" }),
   auth,
-  upload.single("imagePost"),
+  upload.single("image"),
   PostCtrl.PostsCreateOne
 )
 // Récupérer tous les posts
@@ -19,7 +19,7 @@ router.get("/", cors({ methods: "GET" }), auth, PostCtrl.PostsGetAll)
 // Récupérer un seul post
 router.get("/:id", cors({ methods: "GET" }), auth, PostCtrl.PostsGetOne)
 // Mettre à jour un seul post
-router.put("/:id", cors({ methods: "PUT" }), auth,upload.single("imagePost"), PostCtrl.PostsUpdateOne)
+router.put("/:id", cors({ methods: "PUT" }), auth, upload.single("image"), PostCtrl.PostsUpdateOne)
 // Supprimer un seul post
 router.delete(
   "/:id",

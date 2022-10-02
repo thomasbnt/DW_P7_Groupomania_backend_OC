@@ -28,9 +28,9 @@ router.put(
 )
 
 // Security
-router.post(
+router.put(
   "/security",
-  cors({ methods: "POST" }),
+  cors({ methods: "PUT" }),
   auth,
   UserCtrl.UsersSecurity
 )

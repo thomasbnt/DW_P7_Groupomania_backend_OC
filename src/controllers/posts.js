@@ -16,6 +16,7 @@ exports.PostsCreateOne = async (req, res) => {
     // On vérifie s'il y a une image, alors si elle est là, l'altText doit être valide
     const altTextIsValid = regexInputs.checkText(altText);
     const imageIsHere = req.file;
+    let newPost;
     if (imageIsHere) {
       if (!altTextIsValid) {
         return resp.badRequest(
@@ -25,7 +26,7 @@ exports.PostsCreateOne = async (req, res) => {
         );
       }
       // On crée le post avec l'image
-      await prisma.post.create({
+      newPost = await prisma.post.create({
         data: {
           userId: req.user.user.id,
           text: text,
@@ -38,7 +39,7 @@ exports.PostsCreateOne = async (req, res) => {
       });
     } else {
       // On crée le post sans image
-      await prisma.post.create({
+      newPost = await prisma.post.create({
         data: {
           userId: req.user.user.id,
           text: text,
@@ -47,7 +48,7 @@ exports.PostsCreateOne = async (req, res) => {
         }
       });
     }
-    resp.success("Le post a bien été créé", res);
+    res.status(201).json({ message: "Le post a bien été créé", post: newPost });
   } else {
     resp.badRequest("Le contenu du post est vide", res);
   }

@@ -1,0 +1,858 @@
+_type: export
+__export_format: 4
+__export_date: 2022-10-02T17:40:19.159Z
+__export_source: insomnia.desktop.app:v2022.6.0
+resources:
+  - _id: req_wrk_fb10d999178a47d2b78a2e7f14018c2e60327fa5
+    parentId: fld_wrk_fb10d999178a47d2b78a2e7f14018c2eb41c6aff
+    modified: 1662994414690
+    created: 1662994414690
+    url: "{{ base_url }}/status"
+    name: /status
+    description: ""
+    method: GET
+    body: {}
+    parameters: []
+    headers: []
+    authentication: {}
+    metaSortKey: -1662994414691
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: fld_wrk_fb10d999178a47d2b78a2e7f14018c2eb41c6aff
+    parentId: wrk_fb10d999178a47d2b78a2e7f14018c2e
+    modified: 1662994414707
+    created: 1662994414707
+    name: technique
+    description: Seulement côté technique.
+    environment: {}
+    environmentPropertyOrder: null
+    metaSortKey: -1662994414708
+    _type: request_group
+  - _id: wrk_fb10d999178a47d2b78a2e7f14018c2e
+    parentId: null
+    modified: 1662047421047
+    created: 1662047421047
+    name: backend.yaml
+    description: ""
+    scope: design
+    _type: workspace
+  - _id: req_wrk_fb10d999178a47d2b78a2e7f14018c2e3abb9491
+    parentId: fld_wrk_fb10d999178a47d2b78a2e7f14018c2e5b7dcd14
+    modified: 1664728627422
+    created: 1662304109747
+    url: "{{ base_url }}/users/signup"
+    name: Créer un nouveau compte
+    description: ""
+    method: POST
+    body:
+      mimeType: multipart/form-data
+      params:
+        - name: account
+          value: '{  "firstName": "Thomas",  "lastName": "Waq",  "email":
+            "contact@thomasbnnt.fr", "password": "MyAweso?me.Passw0rd"}'
+          id: pair_0d5e90d42435485a97440c2852c47b39
+        - id: pair_661407fb24af4848abd3f9d7ce9d3a18
+          name: profileImage
+          value: ""
+          description: ""
+          type: file
+          multiline: null
+          fileName: D:\Images\ubuntu.png
+    parameters: []
+    headers:
+      - name: Content-Type
+        value: multipart/form-data
+        id: pair_41c0b5f144024d9ca37331af8a56a295
+    authentication: {}
+    metaSortKey: -1662994414755
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: fld_wrk_fb10d999178a47d2b78a2e7f14018c2e5b7dcd14
+    parentId: wrk_fb10d999178a47d2b78a2e7f14018c2e
+    modified: 1663620793978
+    created: 1662303282707
+    name: users
+    description: Operations about users
+    environment: {}
+    environmentPropertyOrder: null
+    metaSortKey: -1662821631707.75
+    _type: request_group
+  - _id: req_wrk_fb10d999178a47d2b78a2e7f14018c2e00ac9da2
+    parentId: fld_wrk_fb10d999178a47d2b78a2e7f14018c2e5b7dcd14
+    modified: 1664728501426
+    created: 1662994414705
+    url: "{{ base_url }}/users/login"
+    name: Se connecter à son compte
+    description: ""
+    method: POST
+    body:
+      mimeType: application/json
+      text: |-
+        {
+        	"email": "contact@thomasbnnt.fr",
+        	"password": "MyAweso?me.Passw0rd"
+        }
+    parameters:
+      - name: email
+        disabled: false
+        value: string
+        id: pair_f20deab23a8b4dca9bf549c8735ac60d
+      - name: password
+        disabled: false
+        value: string
+        id: pair_e42f2dd454134c4981ac2ec2e783fd84
+    headers:
+      - name: Content-Type
+        value: application/json
+        id: pair_b45bc06c8a7c4019925db38ef7fe1f25
+    authentication: {}
+    metaSortKey: -1662994414705
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_wrk_fb10d999178a47d2b78a2e7f14018c2ecd1c58ae
+    parentId: fld_wrk_fb10d999178a47d2b78a2e7f14018c2e5b7dcd14
+    modified: 1664278510949
+    created: 1662303282704
+    url: "{{ base_url }}/users/me"
+    name: Obtenir ses informations de profil public
+    description: ""
+    method: GET
+    body: {}
+    parameters: []
+    headers: []
+    authentication:
+      type: bearer
+      token: "{{ _.bearertoken }}"
+      prefix: ""
+      disabled: false
+    metaSortKey: -1662994414703
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_wrk_fb10d999178a47d2b78a2e7f14018c2e76b1f4c4
+    parentId: fld_wrk_fb10d999178a47d2b78a2e7f14018c2e5b7dcd14
+    modified: 1664278508360
+    created: 1663950605426
+    url: "{{ base_url }}/users/me"
+    name: Editer les informations du compte connecté
+    description: ""
+    method: PUT
+    body:
+      mimeType: multipart/form-data
+    parameters: []
+    headers: []
+    authentication:
+      type: bearer
+      token: "{{ _.bearertoken }}"
+      prefix: ""
+    metaSortKey: -1662994414702.5
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_wrk_fb10d999178a47d2b78a2e7f14018c2e1b098573
+    parentId: fld_wrk_fb10d999178a47d2b78a2e7f14018c2e5b7dcd14
+    modified: 1664278518273
+    created: 1662994414699
+    url: "{{ base_url }}/users/security"
+    name: Modifier son mot de passe et/ou son adresse email
+    description: ""
+    method: POST
+    body:
+      mimeType: application/json
+      text: |
+        {
+        	"newEmail": "contact@thomasbnt.fr",
+        	"newPassword": "MyAweso?me.Passw0rd"
+          }
+    parameters: []
+    headers:
+      - name: Content-Type
+        value: application/json
+        id: pair_a51474e991914917a7e68f2f544e4d62
+    authentication:
+      type: bearer
+      token: "{{ _.bearertoken }}"
+      prefix: ""
+    metaSortKey: -1662994414702
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_wrk_fb10d999178a47d2b78a2e7f14018c2e38e8e88f
+    parentId: fld_wrk_fb10d999178a47d2b78a2e7f14018c2e5b7dcd14
+    modified: 1664278500868
+    created: 1662994414701
+    url: "{{ base_url }}/users/security"
+    name: Supprimer son compte
+    description: ""
+    method: DELETE
+    body: {}
+    parameters: []
+    headers: []
+    authentication:
+      type: bearer
+      token: "{{ _.bearertoken }}"
+      prefix: ""
+    metaSortKey: -1662994414701
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_wrk_fb10d999178a47d2b78a2e7f14018c2e0c6fc6eb
+    parentId: fld_wrk_fb10d999178a47d2b78a2e7f14018c2e87e38948
+    modified: 1664729084939
+    created: 1662994414698
+    url: "{{ base_url }}/posts"
+    name: Créer un nouveau post
+    description: ""
+    method: POST
+    body:
+      mimeType: multipart/form-data
+      params:
+        - name: content
+          value: '{    "text": "Pi-hole sur un Raspbian avec écran LCD",    "altText": "Un
+            Raspberry Pi avec un écran LCD affichant Pi-hole"  }'
+          id: pair_2776708853994715b63a5751180c7378
+        - id: pair_a6ce9e8b50524133882cb16e9de4f18f
+          name: image
+          value: ""
+          description: ""
+          type: file
+          fileName: C:\Users\thomasbnt\Pictures\InkedIMG_20220613_174805_LI.jpg
+    parameters: []
+    headers:
+      - name: Content-Type
+        value: multipart/form-data
+        id: pair_af076bc5b5054408b0b9f8e2221420cf
+    authentication:
+      type: bearer
+      token: "{{ _.bearertoken }}"
+      prefix: ""
+    metaSortKey: -1663620028076
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: fld_wrk_fb10d999178a47d2b78a2e7f14018c2e87e38948
+    parentId: wrk_fb10d999178a47d2b78a2e7f14018c2e
+    modified: 1662998837497
+    created: 1662994414709
+    name: posts
+    description: Section posts
+    environment: {}
+    environmentPropertyOrder: null
+    metaSortKey: -1662648848707.5
+    _type: request_group
+  - _id: req_wrk_fb10d999178a47d2b78a2e7f14018c2eb3bb12fa
+    parentId: fld_wrk_fb10d999178a47d2b78a2e7f14018c2e87e38948
+    modified: 1664278525532
+    created: 1662994414697
+    url: "{{ base_url }}/posts"
+    name: Avoir tous les posts
+    description: ""
+    method: GET
+    body: {}
+    parameters: []
+    headers: []
+    authentication:
+      type: bearer
+      token: "{{ _.bearertoken }}"
+      prefix: ""
+    metaSortKey: -1663620028051
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_wrk_fb10d999178a47d2b78a2e7f14018c2e1de75134
+    parentId: fld_wrk_fb10d999178a47d2b78a2e7f14018c2e87e38948
+    modified: 1664729252621
+    created: 1662994414694
+    url: "{{ base_url }}/posts/3"
+    name: Avoir un seul post
+    description: ""
+    method: GET
+    body: {}
+    parameters: []
+    headers: []
+    authentication:
+      type: bearer
+      token: "{{ _.bearertoken }}"
+      prefix: ""
+    metaSortKey: -1663307221373
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_wrk_fb10d999178a47d2b78a2e7f14018c2e77fa05b2
+    parentId: fld_wrk_fb10d999178a47d2b78a2e7f14018c2e87e38948
+    modified: 1664729313307
+    created: 1663620028026
+    url: "{{ base_url }}/posts/3"
+    name: Éditer un post
+    description: ""
+    method: PUT
+    body:
+      mimeType: multipart/form-data
+      params:
+        - name: content
+          value: '{ "text": "Voici un cheval dans une prairie",    "altText": "Un beau
+            cheval"  }'
+          id: pair_b963f9272a43420c9557e814a87aeca7
+          disabled: false
+        - id: pair_244c76fb316a490cbb121f4bcc4e738a
+          name: image
+          value: ""
+          description: ""
+          type: file
+          disabled: false
+          fileName: C:\Users\thomasbnt\Pictures\photo-1618005182384-a83a8bd57fbe.jpg
+    parameters: []
+    headers:
+      - name: Content-Type
+        value: multipart/form-data
+        id: pair_7326bca66e1645729f62123360bd6419
+    authentication:
+      type: bearer
+      token: "{{ _.bearertoken }}"
+      prefix: ""
+    metaSortKey: -1662994414694.5
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_wrk_fb10d999178a47d2b78a2e7f14018c2ec372a0e6
+    parentId: fld_wrk_fb10d999178a47d2b78a2e7f14018c2e87e38948
+    modified: 1664278528128
+    created: 1662994414692
+    url: "{{ base_url }}/posts/{{ :id }}"
+    name: Supprimer un post
+    description: ""
+    method: DELETE
+    body: {}
+    parameters: []
+    headers:
+      - name: bearer_token
+        disabled: false
+        value: "{{ bearerToken }}"
+        id: pair_9345d24105354922afbe840f7bedaa64
+    authentication:
+      type: bearer
+      token: "{{bearerToken}}"
+      prefix: ""
+    metaSortKey: -1662994414692
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: env_7f58877c6593d00af3acab2c647698b219c2bf4a
+    parentId: wrk_fb10d999178a47d2b78a2e7f14018c2e
+    modified: 1663594623947
+    created: 1662047421056
+    name: Base Environment
+    data:
+      base_url: "{{ scheme }}://{{ host }}{{ base_path }}"
+    dataPropertyOrder: {}
+    color: null
+    isPrivate: false
+    metaSortKey: 1662047421056
+    _type: environment
+  - _id: jar_7f58877c6593d00af3acab2c647698b219c2bf4a
+    parentId: wrk_fb10d999178a47d2b78a2e7f14018c2e
+    modified: 1662047421057
+    created: 1662047421057
+    name: Default Jar
+    cookies: []
+    _type: cookie_jar
+  - _id: spc_81427024916441f4b3aeef2da642bb29
+    parentId: wrk_fb10d999178a47d2b78a2e7f14018c2e
+    modified: 1664730216804
+    created: 1662047421048
+    fileName: OCDWP7OpenAPI.yaml
+    contents: >-
+      openapi: 3.0.0
+
+      info:
+        description: "Projet n°7 OpenClassrooms Développeur Web. — Partie Backend."
+        version: 1.0.0
+        title: DW OC P7 Groupomania
+        license:
+          name: GNU Affero General Public License v3.0
+          url: https://github.com/thomasbnt/DW_P7_Groupomania_backend_OC/blob/main/LICENSE
+      servers: 
+        - url: http://localhost:3000
+      tags:
+        - name: users
+          description: "A propos d'un utilisateur"
+        - name: posts
+          description: "Section posts"
+        - name: technique
+          description: "Seulement côté technique."
+      paths:
+        /users/signup:
+          post:
+            tags:
+              - users
+            summary: "Créer un nouveau compte"
+            operationId: signupUser
+            requestBody:
+              content:
+                multipart/form-data:
+                  schema:
+                    type: object
+                    properties:
+                      account:
+                        type: object
+                        properties:
+                          email:
+                            type: string
+                          password:
+                            type: string
+                          firstName:
+                            type: string
+                          lastName:
+                            type: string
+                      profileImage:
+                        type: string
+                        format: base64
+                  encoding:
+                    imageProfile:
+                      contentType: image/png, image/jpeg
+            responses:
+              "200":
+                description: successful operation
+                content:
+                  application/json:
+                    schema:
+                        type: string    
+        /users/login:
+          post:
+            tags:
+              - users
+            summary: "Se connecter à son compte"
+            operationId: loginUser
+            parameters:
+              - name: email
+                in: query
+                description: "L'email du compte"
+                required: true
+                schema:
+                  type: string
+              - name: password
+                in: query
+                description: "Le mot de passe du compte"
+                required: true
+                schema:
+                  type: string
+            responses:
+              "200":
+                description: successful operation
+                content:
+                  application/json:
+                    schema:
+                      type: string
+              "400":
+                description: "Invalid username/password supplied"
+        /users/me:
+          get:
+            tags:
+              - users
+            summary: Obtenir ses informations de profil public
+            security:
+              - bearerAuth: []
+            responses:
+              "200":
+                description: successful operation
+                content:
+                  application/json:
+                    schema:
+                      $ref: "#/components/schemas/GetUser"
+              "400":
+                description: Invalid username supplied
+              "404":
+                description: User not found
+          put:
+            tags:
+              - users
+            summary: "Editer les informations du compte connecté"
+            security:
+              - bearerAuth: []
+            requestBody:
+              content:
+                multipart/form-data:
+                  schema:
+                    type: object
+                    properties:
+                      account:
+                        type: object
+                        properties:
+                          firstName:
+                            type: string
+                          lastName:
+                            type: string
+                      profileImage:
+                        type: string
+                        format: base64
+                  encoding:
+                    imageProfile:
+                      contentType: image/png, image/jpeg
+            responses:
+              "400":
+                description: Invalid user supplied
+              "404":
+                description: User not found
+        /users/security:
+          post:
+            tags:
+              - users
+            summary: "Modifier son mot de passe et/ou son adresse email"
+            operationId: securityUser
+            security:
+            - bearerAuth: []
+            requestBody:
+              content:
+                  application/json:
+                    schema:
+                      $ref: "#/components/schemas/PostUserSecurity"
+            responses:
+              "200":
+                description: successful operation
+                content:
+                  application/json:
+                    schema:
+                      properties:
+                        success:
+                          type: string
+          delete:
+            tags:
+              - users
+            summary: "Supprimer son compte"
+            operationId: deleteUser
+            security:
+            - bearerAuth: []
+            responses:
+              "200": 
+                description: "Votre compte a bien été supprimé"
+              "404":
+                description: "Utilisateur non trouvé"
+                        
+        /posts:
+          post:
+            tags:
+              - posts
+            summary: "Créer un nouveau post"
+            security:
+            - bearerAuth: []
+            requestBody:
+              content:
+                multipart/form-data:
+                  schema:
+                    type: object
+                    properties:
+                      content:
+                        type: object
+                        properties:
+                          text:
+                            type: string
+                          altText:
+                            type: string
+                      image:
+                        type: string
+                        format: base64
+                  encoding:
+                    image:
+                      contentType: image/png, image/jpeg
+            responses:
+              "200":
+                description: successful operation
+                content:
+                  application/json:
+                    schema:
+                        type: string
+          get:
+            tags:
+              - posts
+            summary: "Avoir tous les posts"
+            security:
+            - bearerAuth: []
+            responses:
+              "200":
+                description: successful operation
+                content:
+                  application/json:
+                    schema:
+                      type: object
+                      properties:
+                        items:
+                          type: object
+                          properties:    
+                            id:
+                              type: number
+                              example: 39483910293847584930
+                            acountId:
+                              type: number
+                              example: 12345678901234567890
+                            text:
+                              type: string
+                              example: "Super cool post sur les cheveaux"
+                            image:
+                              type: string
+                              example: "http://localhost:3000/posts/images/supercoolimage_1661445600.png"
+                            altText:
+                              type: string
+                              example: "Un cheval"
+                            createdAt:
+                              type: number
+                              example: 1661445600
+                            accountLiked:
+                              type: array
+                              items:
+                                type: string
+                                example: "12345678901234567890"                     
+        "/posts/{id}":
+          parameters:
+          - name: id
+            in: path
+            description: ID du post
+            required: true
+            schema:
+              type: number
+          put:
+            tags:
+              - posts
+            summary: "Éditer un post"
+            security:
+            - bearerAuth: []
+            requestBody:
+              content:
+                multipart/form-data:
+                  schema:
+                    type: object
+                    properties:
+                      content:
+                        type: object
+                        properties:
+                          text:
+                            type: string
+                            example: "Voici un cheval dans une prairie"
+                          altText:
+                            type: string
+                            example: "Un beau cheval"
+                      image:
+                            type: string
+                            format: base64
+                  encoding:
+                    image:
+                      contentType: image/png, image/jpeg
+            responses:
+              "200":
+                description: successful operation
+                content:
+                  application/json:
+                    schema:
+                        type: object
+                        properties:
+                          success:
+                            type: string
+                            example: "Vous avez bien édité votre post"
+          get:
+            tags:
+              - posts
+            summary: "Avoir un seul post"
+            security:
+            - bearerAuth: []
+            responses:
+              "200":
+                description: successful operation
+                content:
+                  application/json:
+                    schema:
+                        type: object
+                        properties:
+                          id:
+                            type: number
+                            example: 39483910293847584930
+                          firstName:
+                            type: string
+                            example: "Thomas"
+                          lastName:
+                            type: string
+                            example: "Bnt"
+                          
+                          
+          delete:
+              tags:
+                - posts
+              summary: "Supprimer un post"
+              security:
+              - bearerAuth: []
+              responses:
+                "200":
+                  description: successful operation
+                  content:
+                    application/json:
+                      schema:
+                          type: object
+                          properties:
+                            success:
+                              type: string
+                              example: "Vous avez bien supprimé votre post"
+                             
+        /status:
+          get:
+            tags:
+              - technique
+            responses:
+              "200":
+                description: successful operation
+                content:
+                  application/json:
+                    schema:
+                        type: object
+                        properties:
+                          success:
+                            type: string
+                            example: "Tout est up!"
+
+
+      components:
+        securitySchemes:
+          bearerAuth:
+            type: http
+            scheme: bearer
+            bearerFormat: JWT
+
+        requestBodies:
+          UserArray:
+            content:
+              multipart/form-data:
+                schema:
+                  type: array
+            description: List of user object
+            required: true
+        schemas:
+          GetUser:
+            type: object
+            properties:
+              id:
+                type: number
+                description: "ID du compte"
+              firstName:
+                type: string
+                description: "Prénom"
+              lastName:
+                type: string
+                description: "Nom"
+              email:
+                type: string
+                description: "Email"
+              imageProfile:
+                type: string
+                format: int32
+                description: "Image de profil"
+              createdAt:
+                type: number
+                description: "http://localhost:3000/imagesProfile/12345678901234567890.png"
+          PostUserSecurity:
+            type: object
+            properties:
+              newEmail:
+                type: string
+                description: "Nouvelle adresse email"
+                example: "contact@thomasbnt.fr"
+              newPassword:
+                type: string
+                description: "Nouveau mot de passe"
+    contentType: yaml
+    _type: api_spec
+  - _id: env_env_7f58877c6593d00af3acab2c647698b219c2bf4a_sub
+    parentId: env_7f58877c6593d00af3acab2c647698b219c2bf4a
+    modified: 1662998798917
+    created: 1662286210114
+    name: OpenAPI env
+    data:
+      scheme: http
+      base_path: /
+      host: http://localhost:3000
+      bearerToken: bearerToken
+    dataPropertyOrder:
+      "&":
+        - scheme
+        - base_path
+        - host
+        - bearerToken
+    color: null
+    isPrivate: false
+    metaSortKey: 1662286210114
+    _type: environment
+  - _id: env_c419e81eb9b9409c8ac0aa06d1c4f653
+    parentId: env_7f58877c6593d00af3acab2c647698b219c2bf4a
+    modified: 1663950775284
+    created: 1663594628348
+    name: P7 DW OC
+    data:
+      base_url: http://localhost:3000
+      bearertoken: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoxOSwiY3JlYXRlZEF0IjoiMjAyMi0wOS0yM1QxNjoyMzoxMi45NzFaIiwiZW1haWwiOiJjb250YWN0QHRob21hc2JubnQuZnIiLCJwYXNzd29yZCI6IiQyYiQxMCR5bXppNlR0SUVPdFViVlJlakhQNDZlRXN1VzJTaUhhYmdKMlZCSC9ybDJjS0YuTDZIcGU0dSIsImZpcnN0TmFtZSI6IlRob21hcyIsImxhc3ROYW1lIjoiV2FxIiwicm9sZSI6IlVTRVIiLCJpbWFnZVByb2ZpbGUiOiJodHRwOi8vbG9jYWxob3N0OjMwMDAvaW1hZ2VzL3Byb2ZpbGVzL251eHRqcy0xNjYzOTUwNTkyNTYxLnBuZyIsImJhbm5lZCI6ZmFsc2V9LCJpYXQiOjE2NjM5NTA3NjN9.xWtbS1AIFt_0vrpM1-xFKw5gGTPXf7XUvYmWGdqkOm8
+    dataPropertyOrder:
+      "&":
+        - base_url
+        - bearertoken
+    color: null
+    isPrivate: true
+    metaSortKey: 1663594628348
+    _type: environment
