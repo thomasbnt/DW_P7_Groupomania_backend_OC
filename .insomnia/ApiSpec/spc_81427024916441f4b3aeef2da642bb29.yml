@@ -1,7 +1,7 @@
 _id: spc_81427024916441f4b3aeef2da642bb29
 type: ApiSpec
 parentId: wrk_fb10d999178a47d2b78a2e7f14018c2e
-modified: 1664734694434
+modified: 1664817084278
 created: 1662047421048
 fileName: OCDWP7OpenAPI.yaml
 contents: >-
@@ -21,6 +21,8 @@ contents: >-
       description: "A propos d'un utilisateur"
     - name: posts
       description: "Section posts"
+    - name: reactions
+      description: "Ajouter ou supprimer une réaction sur un post"
     - name: technique
       description: "Seulement côté technique."
   paths:
@@ -244,7 +246,7 @@ contents: >-
                           items:
                             type: string
                             example: "12345678901234567890"                     
-    "/posts/{id}":
+    /posts/{id}:
       parameters:
       - name: id
         in: path
@@ -332,21 +334,48 @@ contents: >-
                         success:
                           type: string
                           example: "Vous avez bien supprimé votre post"
-                         
+
+    /reactions/{id}:
+          parameters:
+          - name: id
+            in: path
+            description: ID du post
+            required: true
+            schema:
+              type: number
+          put:
+            tags:
+              - reactions
+            summary: "Ajouter/supprimer une réaction sur un post"
+            security:
+            - bearerAuth: []
+              
+            responses:
+              "200":
+                description: successful operation
+                content:
+                  application/json:
+                    schema:
+                        type: object
+                        properties:
+                          success:
+                            type: string
+                            example: "Vous avez bien édité votre post"
+
     /status:
-      get:
-        tags:
-          - technique
-        responses:
-          "200":
-            description: successful operation
-            content:
-              application/json:
-                schema:
-                    type: object
-                    properties:
-                      success:
-                        type: string
+          get:
+            tags:
+              - technique
+            responses:
+              "200":
+                description: successful operation
+                content:
+                  application/json:
+                    schema:
+                        type: object
+                        properties:
+                          success:
+                            type: string
                         example: "Tout est up!"
 
 
