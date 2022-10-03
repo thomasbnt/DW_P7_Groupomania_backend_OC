@@ -72,6 +72,9 @@ npx prisma db push
 - Testé avec **Insomnia**
 - Documentation format **OpenAI**
 
+[![Run in Insomnia}](https://insomnia.rest/images/run.svg)](https://insomnia.rest/run/?label=DW%20P7%20Groupomania%20API&uri=https%3A%2F%2Fraw.githubusercontent.com%2Fthomasbnt%2FDW_P7_Groupomania_backend_OC%2Fmain%2Fswagger.yaml)
+
+
 ## Contributions
 
 Les contributions sont toujours les bienvenues ! Lisez les règles pour les contributions avant de pouvoir y participer.
