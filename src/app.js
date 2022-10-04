@@ -37,4 +37,8 @@ app.use("/users", users)
 const posts = require("./routes/posts")
 app.use("/posts", posts)
 
+// Route Reactions
+const reactions = require("./routes/reactions")
+app.use("/reactions", reactions)
+
 module.exports = app
