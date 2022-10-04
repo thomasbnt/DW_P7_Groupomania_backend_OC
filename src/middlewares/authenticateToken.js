@@ -7,8 +7,7 @@ module.exports = (req, res, next) => {
     const token = authHeader && authHeader.split(" ")[1]
 
     // Si le token n'est pas présent, on renvoie une erreur
-    if (token === null)
-      return resp.invalidCredentials("Invalid credentials", res)
+    if (token === null) return resp.invalidCredentials("Invalid credentials", res)
 
     // On décode le token
     jwt.verify(token, process.env.JWT_SECRET_KEY, (err, user) => {

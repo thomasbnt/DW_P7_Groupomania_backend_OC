@@ -3,8 +3,7 @@ const regexInputs = require("../modules/regexInputs")
 const hash = require("../middlewares/hash")
 const { PrismaClient } = require("@prisma/client")
 const prisma = new PrismaClient()
-const { post: Post, user: User, reaction: Reaction } = prisma;
-
+const { post: Post, user: User, reaction: Reaction } = prisma
 
 function ajoutVirgule(informationsEdited) {
   informationsEdited.splice(informationsEdited.length - 1, 0, "et")
@@ -19,13 +18,7 @@ exports.UsersSignup = async (req, res) => {
   // Vérifier si le contenu account n'est pas vide dans un premier temps
   try {
     const account = JSON.parse(req.body.account)
-    if (
-      !account &&
-      !account.email &&
-      !account.password &&
-      !account.lastName &&
-      !account.firstName
-    )
+    if (!account && !account.email && !account.password && !account.lastName && !account.firstName)
       return resp.badRequest(
         "Il manque des informations pour vous enregistrer. Veuillez bien fournir tout les champs.",
         res
@@ -47,33 +40,21 @@ exports.UsersSignup = async (req, res) => {
       lastNameIsValid,
     })
 
-    if (!emailIsValid)
-      return resp.badRequest(
-        "L'email que vous avez entré n'est pas valide",
-        res
-      )
+    if (!emailIsValid) return resp.badRequest("L'email que vous avez entré n'est pas valide", res)
     if (!passwordIsValid)
       return resp.badRequest(
         "Le mot de passe doit être au minimum de 8 caractères comprenant un caractère spécial, un chiffre, une lettre majuscule.",
         res
       )
-    if (!firstNameIsValid)
-      return resp.badRequest(
-        "Le prénom que vous avez entré n'est pas valide",
-        res
-      )
-    if (!lastNameIsValid)
-      return resp.badRequest("Le nom que vous avez entré n'est pas valide", res)
+    if (!firstNameIsValid) return resp.badRequest("Le prénom que vous avez entré n'est pas valide", res)
+    if (!lastNameIsValid) return resp.badRequest("Le nom que vous avez entré n'est pas valide", res)
 
     const userFindUniqueByEmail = await prisma.user.findUnique({
       where: { email: email },
     })
     console.log({ userFindUniqueByEmail })
     if (userFindUniqueByEmail)
-      return resp.badRequest(
-        "Le compte avec cette adresse email existe déjà. Veuillez vous connecter.",
-        res
-      )
+      return resp.badRequest("Le compte avec cette adresse email existe déjà. Veuillez vous connecter.", res)
     if (!userFindUniqueByEmail) {
       await prisma.user.create({
         data: {
@@ -81,19 +62,14 @@ exports.UsersSignup = async (req, res) => {
           lastName: lastName,
           email: email,
           password: await hash.gen(password),
-          imageProfile: `${req.protocol}://${req.get("host")}/images/profiles/${
-            req.file.filename
-          }`,
+          imageProfile: `${req.protocol}://${req.get("host")}/images/profiles/${req.file.filename}`,
         },
       })
       resp.created("Compte créé avec succès", res)
     }
   } catch (error) {
     console.log({ error })
-    resp.badRequest(
-      "Veuillez bien remplir vos données de compte utilisateur.",
-      res
-    )
+    resp.badRequest("Veuillez bien remplir vos données de compte utilisateur.", res)
   }
 }
 
@@ -101,29 +77,17 @@ exports.UsersSignup = async (req, res) => {
 exports.UsersLogin = async (req, res) => {
   console.log("Login request received")
   const { email, password } = req.body
-  if (!email || !password)
-    return resp.badRequest("Veuillez remplir tous les champs", res)
+  if (!email || !password) return resp.badRequest("Veuillez remplir tous les champs", res)
   const userFindUniqueByEmail = await prisma.user.findUnique({
     where: { email: email },
   })
   if (!userFindUniqueByEmail)
-    return resp.badRequest(
-      "Le compte avec cette adresse email n'existe pas. Veuillez vous enregistrer.",
-      res
-    )
+    return resp.badRequest("Le compte avec cette adresse email n'existe pas. Veuillez vous enregistrer.", res)
   // On vérifie si le mot de passe est correct
-  const passwordIsValid = await hash.compare(
-    password,
-    userFindUniqueByEmail.password
-  )
-  if (!passwordIsValid)
-    return resp.badRequest("Le mot de passe est incorrect", res)
+  const passwordIsValid = await hash.compare(password, userFindUniqueByEmail.password)
+  if (!passwordIsValid) return resp.badRequest("Le mot de passe est incorrect", res)
   // Vérifier si l'user est banni
-  if (userFindUniqueByEmail.banned)
-    return resp.badRequest(
-      "Vous ne pouvez pas vous connecter à votre compte.",
-      res
-    )
+  if (userFindUniqueByEmail.banned) return resp.badRequest("Vous ne pouvez pas vous connecter à votre compte.", res)
   // TODO #2 : Input MemorizeMe pour le front
   // On génère un token
   const token = await hash.genToken(userFindUniqueByEmail)
@@ -194,9 +158,7 @@ exports.UsersMePut = async (req, res) => {
       await prisma.user.update({
         where: { id: req.user.user.id },
         data: {
-          imageProfile: `${req.protocol}://${req.get("host")}/images/profiles/${
-            req.file.filename
-          }`,
+          imageProfile: `${req.protocol}://${req.get("host")}/images/profiles/${req.file.filename}`,
         },
       })
       informationsEdited.push("L'image de profil")
@@ -213,18 +175,10 @@ exports.UsersMePut = async (req, res) => {
     return resp.success(`${informationsEdited} a été modifiée.`, res)
   }
   if (informationsEdited.length > 1 && informationsEdited.length < 3) {
-    return resp.success(
-      `Les informations suivantes ont été modifiées : ${ajoutVirgule(
-        informationsEdited
-      )}.`,
-      res
-    )
+    return resp.success(`Les informations suivantes ont été modifiées : ${ajoutVirgule(informationsEdited)}.`, res)
   }
   if (informationsEdited.length >= 3) {
-    return resp.success(
-      `Les informations suivantes ont été modifiées : le prénom, le nom et l'image de profil.`,
-      res
-    )
+    return resp.success(`Les informations suivantes ont été modifiées : le prénom, le nom et l'image de profil.`, res)
   }
 }
 
@@ -305,11 +259,6 @@ exports.UsersSecurity = async (req, res) => {
     return resp.success(`${changedActions} a été modifié.`, res)
   }
   if (changedActions.length > 1 && changedActions.length < 3) {
-    return resp.success(
-      `Les informations suivantes ont été modifiées : ${ajoutVirgule(
-        changedActions
-      )}.`,
-      res
-    )
+    return resp.success(`Les informations suivantes ont été modifiées : ${ajoutVirgule(changedActions)}.`, res)
   }
 }
