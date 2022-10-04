@@ -5,6 +5,7 @@ exports.status = async (req, res) => {
   console.log("status route has been called")
   const postsCount = await prisma.post.count()
   const usersCount = await prisma.user.count()
+  const reactionsCount = await prisma.reaction.count()
   res.status(200).json({
     status: "Tout est up!",
     date: {
@@ -14,6 +15,6 @@ exports.status = async (req, res) => {
         timeZone: "Europe/Paris",
       }),
     },
-    stats: { postsCount, usersCount },
+    stats: { postsCount, usersCount, reactionsCount },
   })
 }
