@@ -1,7 +1,7 @@
 _id: spc_81427024916441f4b3aeef2da642bb29
 type: ApiSpec
 parentId: wrk_fb10d999178a47d2b78a2e7f14018c2e
-modified: 1664817084278
+modified: 1664884894898
 created: 1662047421048
 fileName: OCDWP7OpenAPI.yaml
 contents: >-
@@ -246,9 +246,9 @@ contents: >-
                           items:
                             type: string
                             example: "12345678901234567890"                     
-    /posts/{id}:
+    /posts/{PostId}:
       parameters:
-      - name: id
+      - name: PostId
         in: path
         description: ID du post
         required: true
@@ -335,9 +335,9 @@ contents: >-
                           type: string
                           example: "Vous avez bien supprimé votre post"
 
-    /reactions/{id}:
+    /reactions/{Postid}:
           parameters:
-          - name: id
+          - name: Postid
             in: path
             description: ID du post
             required: true
@@ -376,7 +376,7 @@ contents: >-
                         properties:
                           success:
                             type: string
-                        example: "Tout est up!"
+                            example: "Tout est up!"
 
 
   components:

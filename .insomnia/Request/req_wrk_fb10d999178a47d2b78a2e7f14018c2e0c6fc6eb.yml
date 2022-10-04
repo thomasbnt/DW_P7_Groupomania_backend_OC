@@ -1,7 +1,7 @@
 _id: req_wrk_fb10d999178a47d2b78a2e7f14018c2e0c6fc6eb
 type: Request
 parentId: fld_wrk_fb10d999178a47d2b78a2e7f14018c2e87e38948
-modified: 1664734688307
+modified: 1664884328983
 created: 1662994414698
 url: "{{ base_url }}/posts"
 name: Créer un nouveau post
@@ -19,7 +19,7 @@ body:
       value: ""
       description: ""
       type: file
-      fileName: C:\Users\thomasbnt\Pictures\InkedIMG_20220613_174805_LI.jpg
+      fileName: C:\Users\thomasbnt\Pictures\photo-1618005182384-a83a8bd57fbe.jpg
 parameters: []
 headers:
   - name: Content-Type
@@ -29,7 +29,7 @@ authentication:
   type: bearer
   token: "{{ _.bearertoken }}"
   prefix: ""
-metaSortKey: -1663620028076
+metaSortKey: -1664835636576
 isPrivate: false
 settingStoreCookies: true
 settingSendCookies: true

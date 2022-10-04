@@ -1,0 +1,10 @@
+_id: fld_wrk_fb10d999178a47d2b78a2e7f14018c2ed7f57747
+type: RequestGroup
+parentId: wrk_fb10d999178a47d2b78a2e7f14018c2e
+modified: 1664835650101
+created: 1664835636539
+name: reactions
+description: Ajouter ou supprimer une réaction sur un post
+environment: {}
+environmentPropertyOrder: null
+metaSortKey: -1662735240207.625

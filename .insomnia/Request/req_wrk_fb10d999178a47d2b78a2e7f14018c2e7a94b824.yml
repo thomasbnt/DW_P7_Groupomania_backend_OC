@@ -1,12 +1,12 @@
-_id: req_wrk_fb10d999178a47d2b78a2e7f14018c2eb3bb12fa
+_id: req_wrk_fb10d999178a47d2b78a2e7f14018c2e7a94b824
 type: Request
-parentId: fld_wrk_fb10d999178a47d2b78a2e7f14018c2e87e38948
-modified: 1664839547888
-created: 1662994414697
-url: "{{ base_url }}/posts"
-name: Avoir tous les posts
+parentId: fld_wrk_fb10d999178a47d2b78a2e7f14018c2ed7f57747
+modified: 1664884668137
+created: 1664835636521
+url: "{{ _.base_url }}/reactions/7"
+name: Ajouter/supprimer une réaction sur un post
 description: ""
-method: GET
+method: PUT
 body: {}
 parameters: []
 headers: []
@@ -14,7 +14,8 @@ authentication:
   type: bearer
   token: "{{ _.bearertoken }}"
   prefix: ""
-metaSortKey: -1663620028051
+  disabled: false
+metaSortKey: -1664835636521
 isPrivate: false
 settingStoreCookies: true
 settingSendCookies: true
