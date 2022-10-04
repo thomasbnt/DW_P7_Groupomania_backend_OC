@@ -18,13 +18,15 @@ const storage = multerImagesPosts.diskStorage({
     cb(null, "src/images/posts")
   },
   filename: (req, file, cb) => {
-    cb(
-      null,
-      `${getFileNameWithoutExtension(file.originalname)}-${+Date.now()}.${
-        MIME_TYPE_MAP[file.mimetype]
-      }`
-    )
+    cb(null, `${getFileNameWithoutExtension(file.originalname)}-${+Date.now()}.${MIME_TYPE_MAP[file.mimetype]}`)
   },
 })
-
-module.exports = multerImagesPosts({ storage: storage })
+const upload = multerImagesPosts({ storage: storage }).single("image")
+module.exports = function(req, res, next) {
+  upload(req, res, function(err) {
+    if (err) {
+      return res.status(400).json({ error: "Le fichier envoyé n'est pas une image" })
+    }
+    next()
+  })
+}

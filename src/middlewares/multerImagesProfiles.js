@@ -18,13 +18,16 @@ const storage = multerImagesProfiles.diskStorage({
     cb(null, "src/images/profiles")
   },
   filename: (req, file, cb) => {
-    cb(
-      null,
-      `${getFileNameWithoutExtension(file.originalname)}-${+Date.now()}.${
-        MIME_TYPE_MAP[file.mimetype]
-      }`
-    )
+    cb(null, `${getFileNameWithoutExtension(file.originalname)}-${+Date.now()}.${MIME_TYPE_MAP[file.mimetype]}`)
   },
 })
 
-module.exports = multerImagesProfiles({ storage: storage })
+const upload = multerImagesProfiles({ storage: storage }).single("imageProfile")
+module.exports = function(req, res, next) {
+  upload(req, res, function(err) {
+    if (err) {
+      return res.status(400).json({ error: "Le fichier envoyé n'est pas une image" })
+    }
+    next()
+  })
+}
