@@ -94,6 +94,7 @@ exports.UsersLogin = async (req, res) => {
   res.status(200).json({
     message: "Connexion réussie",
     session_token: token,
+    isBanned: userFindUniqueByEmail.banned,
   })
 }
 
