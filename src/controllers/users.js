@@ -110,7 +110,6 @@ exports.UsersMeGet = async (req, res) => {
 
   // On supprime certaines informations de l'utilisateur
   delete userObject.user.password
-  delete userObject.user.email
   delete userObject.user.banned
   delete userObject.user.role
   delete userObject.iat
