@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/DW_P7_Groupomania_backend_OC.iml" filepath="$PROJECT_DIR$/.idea/DW_P7_Groupomania_backend_OC.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../DW_P7_Groupomania_frontend_OC/.idea/DW_P7_Groupomania_frontend_OC.iml" filepath="$PROJECT_DIR$/../DW_P7_Groupomania_frontend_OC/.idea/DW_P7_Groupomania_frontend_OC.iml" />
     </modules>
   </component>
 </project>
