@@ -199,7 +199,10 @@ exports.UsersMeDelete = async (req, res) => {
     })
     resp.success("Votre compte a été supprimé avec succès", res)
   } catch (error) {
-    resp.badRequest("L'utilisateur n'existe pas/plus.", res)
+    res.status(400).json({
+      error: "L'utilisateur n'existe pas/plus.",
+      codeError: "USER_NOT_FOUND",
+    })
   }
 }
 
@@ -244,8 +247,10 @@ exports.UsersSecurity = async (req, res) => {
         })
         changedActions.push("L'email")
       } catch (error) {
-        console.log({ error })
-        resp.badRequest("L'utilisateur n'existe pas/plus.", res)
+        res.status(400).json({
+          error: "L'utilisateur n'existe pas/plus.",
+          codeError: "USER_NOT_FOUND",
+        })
       }
     } else {
       return resp.badRequest("L'email n'est pas valide.", res)
