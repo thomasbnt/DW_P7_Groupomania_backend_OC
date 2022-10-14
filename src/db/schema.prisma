@@ -33,11 +33,11 @@ enum Role {
 model Post {
   id        Int        @id @default(autoincrement())
   createdAt DateTime   @default(now())
-  text      String     @db.VarChar(255)
+  text      String     @db.VarChar(501)
   author    User       @relation(fields: [userId], references: [id])
   userId    Int
   image     String?    @db.VarChar(255)
-  altText   String?    @db.VarChar(255)
+  altText   String?    @db.VarChar(501)
   reactions Reaction[]
 }
 

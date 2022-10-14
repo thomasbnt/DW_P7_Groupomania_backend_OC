@@ -1,6 +1,8 @@
 const { PrismaClient } = require("@prisma/client")
 const prisma = new PrismaClient()
 const { user: User } = prisma
+const hash = require("../middlewares/hash");
+
 
 async function main() {
   await User.create({
@@ -8,7 +10,7 @@ async function main() {
       firstName: "Admin",
       lastName: "Smith",
       email: "admin@thomasbnt.fr",
-      password: "password",
+      password: await hash.gen('password'),
       imageProfile: "x",
       role: "ADMIN",
     },

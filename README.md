@@ -50,20 +50,20 @@ Génération des fichiers Prisma :
 npx prisma generate
 ```
 
-Initialisation de la base de données avec des valeurs par défaut :
-
-_Pour avoir le compte Admin_
-
-```bash
-npx prisma seed
-```
-
 Pour la gestion de la base de données, nous utilisons **Prisma**. Pour plus d'informations, veuillez vous rendre sur [la documentation de Prisma](https://www.prisma.io/docs/).
 
 Synchronisez le modèle de données `src/db/schema.prisma` avec la base de données :
 
 ```bash
 npx prisma db push
+```
+
+Initialisation de la base de données avec des valeurs par défaut :
+
+_Pour avoir le compte Admin_
+
+```bash
+npx prisma db seed
 ```
 
 ## Développement

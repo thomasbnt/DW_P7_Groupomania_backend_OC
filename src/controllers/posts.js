@@ -17,12 +17,15 @@ exports.PostsCreateOne = async (req, res) => {
     const altTextIsValid = regexInputs.checkText(altText)
     const imageIsHere = req.file
     let newPost
+    // Le post et l'alt text pas plus de 500 caractères
+    if (text.length > 500) return resp.badRequest("Le contenu du post ne doit pas dépasser 500 caractères", res)
+    if (altText.length > 500) return resp.badRequest("Le contenu de l'alt text ne doit pas dépasser 500 caractères", res)
     if (imageIsHere) {
       if (!altTextIsValid) {
         return resp.badRequest( "Le texte alternatif de l'image n'est pas valide", res)
       }
       // On crée le post avec l'image
-      newPost = await prisma.post.create({
+      newPost = await Post.create({
         data: {
           userId: req.user.user.id,
           text: text,
@@ -35,7 +38,7 @@ exports.PostsCreateOne = async (req, res) => {
       res.status(201).json({ message: "Le post a bien été créé", post: newPost })
     } else {
       // On crée le post sans image
-      newPost = await prisma.post.create({
+      newPost = await Post.create({
         data: {
           userId: req.user.user.id,
           text: text,

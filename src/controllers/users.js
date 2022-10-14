@@ -67,7 +67,11 @@ exports.UsersSignup = async (req, res) => {
       });
       // On génère un token
       const token = await hash.genToken(userFindUniqueByEmail);
-      res.status(201).json({ message: "Compte créé avec succès", session_token: token });
+      res.status(201).json({
+        message: "Compte créé avec succès",
+        code: "ACCOUNT_CREATED",
+        session_token: token
+      });
     }
   } catch (error) {
     console.log({ error });
@@ -228,7 +232,7 @@ exports.UsersMeDelete = async (req, res) => {
       codeError: "USER_NOT_FOUND"
     });
   }
-};
+}
 
 exports.UsersSecurity = async (req, res) => {
   console.log("Security user request received");
