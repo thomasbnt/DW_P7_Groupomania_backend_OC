@@ -1,4 +1,3 @@
-// TODO : Message resp Err 400 si input non conforme.
 class RegexInputs {
   checkEmail(email) {
     if (email === undefined || email === "") {
