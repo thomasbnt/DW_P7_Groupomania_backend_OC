@@ -65,7 +65,9 @@ exports.UsersSignup = async (req, res) => {
           imageProfile: `${req.protocol}://${req.get("host")}/images/profiles/${req.file.filename}`
         }
       });
-      resp.created("Compte créé avec succès", res);
+      // On génère un token
+      const token = await hash.genToken(userFindUniqueByEmail);
+      res.status(201).json({ message: "Compte créé avec succès", session_token: token });
     }
   } catch (error) {
     console.log({ error });
@@ -208,18 +210,19 @@ exports.UsersMeDelete = async (req, res) => {
   // On supprime l'utilisateur
   try {
     await User.delete({
-      where: { id: req.user.user.id }
+      where: { id: parseInt(req.user.user.id) }
     });
     // On supprime tous les posts créés par ce compte
     await Post.deleteMany({
-      where: { userId: req.user.user.id }
+      where: { author: req.user.user.id }
     });
     // On supprime toutes les réactions créées par ce compte
     await Reaction.deleteMany({
-      where: { userId: req.user.user.id }
+      where: { author: req.user.user.id }
     });
     resp.success("Votre compte a été supprimé avec succès", res);
   } catch (error) {
+    console.log(error);
     res.status(400).json({
       error: "L'utilisateur n'existe pas/plus.",
       codeError: "USER_NOT_FOUND"

@@ -6,6 +6,15 @@ exports.status = async (req, res) => {
   const postsCount = await prisma.post.count()
   const usersCount = await prisma.user.count()
   const reactionsCount = await prisma.reaction.count()
+  // Tout les authors
+  const authors = await prisma.user.findMany({
+    select: {
+      id: true,
+      firstName: true,
+      lastName: true,
+      imageProfile: true,
+    }
+  })
   res.status(200).json({
     status: "Tout est up!",
     date: {
@@ -16,5 +25,6 @@ exports.status = async (req, res) => {
       }),
     },
     stats: { postsCount, usersCount, reactionsCount },
+    authors
   })
 }

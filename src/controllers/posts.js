@@ -19,7 +19,7 @@ exports.PostsCreateOne = async (req, res) => {
     let newPost
     if (imageIsHere) {
       if (!altTextIsValid) {
-        return resp.badRequest(400, "Le texte alternatif de l'image n'est pas valide", res)
+        return resp.badRequest( "Le texte alternatif de l'image n'est pas valide", res)
       }
       // On crée le post avec l'image
       newPost = await prisma.post.create({
@@ -31,6 +31,8 @@ exports.PostsCreateOne = async (req, res) => {
           createdAt: new Date(),
         },
       })
+      console.log("Post with image created");
+      res.status(201).json({ message: "Le post a bien été créé", post: newPost })
     } else {
       // On crée le post sans image
       newPost = await prisma.post.create({
@@ -41,10 +43,11 @@ exports.PostsCreateOne = async (req, res) => {
           createdAt: new Date(),
         },
       })
+      console.log("Post without image created");
+      res.status(201).json({ message: "Le post a bien été créé", post: newPost })
     }
-    res.status(201).json({ message: "Le post a bien été créé", post: newPost })
   } else {
-    resp.badRequest("Le contenu du post est vide", res)
+    res.status(400).json({ message: "Le contenu du post n'est pas valide" })
   }
 }
 
