@@ -62,9 +62,14 @@ Initialisation de la base de données avec des valeurs par défaut :
 
 _Pour avoir le compte Admin_
 
+
 ```bash
 npx prisma db seed
 ```
+
+Email : **admin@ndd.local**
+Mot de passe : **password**
+
 
 ## Développement
 

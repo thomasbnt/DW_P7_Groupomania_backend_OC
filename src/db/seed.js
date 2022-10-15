@@ -8,10 +8,10 @@ async function main() {
   await User.create({
     data: {
       firstName: "Admin",
-      lastName: "Smith",
-      email: "admin@thomasbnt.fr",
+      lastName: "local",
+      email: "admin@ndd.local",
       password: await hash.gen('password'),
-      imageProfile: "x",
+      imageProfile: "",
       role: "ADMIN",
     },
   })
