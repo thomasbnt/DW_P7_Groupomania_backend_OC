@@ -17,7 +17,7 @@ exports.default = async (req, res) => {
 exports.ReactionAddRemove = async (req, res) => {
   console.log("ReactionAdd request received")
   // On vérifie si l'ID est présent et qui n'est pas null
-  if (!req.params.id || req.params.id === null) return resp.badRequest("Vous avez oublié l'ID du post", res)
+  if (!req.params.id) return resp.badRequest("Vous avez oublié l'ID du post", res)
   // On vérifie si req.params.id est un nombre
   if (isNaN(req.params.id)) return resp.badRequest("L'ID du post doit être un nombre", res)
   // On récupère l'ID du post
@@ -40,9 +40,8 @@ exports.ReactionAddRemove = async (req, res) => {
   // On vérifie si l'utilisateur a déjà réagi au post
   const alreadyReacted = await Reaction.findUnique({
     where: { postId: postId },
-    select: { postId: true, authorId: true },
+    select: { authorId: true },
   })
-  console.log({ alreadyReacted })
   // Si l'utilisateur n'a pas encore réagi au post
   if (!alreadyReacted) {
     // On ajoute la réaction
@@ -53,7 +52,10 @@ exports.ReactionAddRemove = async (req, res) => {
         reaction: "LIKE",
       },
     })
-    return resp.created("Réaction ajoutée", res)
+    return res.status(201).json({
+      message: "Réaction ajoutée",
+      code: 'REACTION_ADDED',
+    })
   }
   // Si l'utilisateur a déjà réagi au post
   if (alreadyReacted) {
@@ -62,6 +64,9 @@ exports.ReactionAddRemove = async (req, res) => {
       where: { postId: postId },
       select: { postId: true, authorId: true },
     })
-    return resp.success("Réaction supprimée", res)
+    return res.status(201).json({
+      message: "Réaction supprimée",
+      code: 'REACTION_REMOVED',
+    })
   }
 }

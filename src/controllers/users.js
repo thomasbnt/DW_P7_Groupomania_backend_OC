@@ -117,7 +117,6 @@ exports.UsersMeGet = async (req, res) => {
   // On supprime certaines informations de l'utilisateur
   delete userObject.user.password;
   delete userObject.user.banned;
-  delete userObject.user.role;
   delete userObject.iat;
 
   // On renvoie l'objet
@@ -215,14 +214,6 @@ exports.UsersMeDelete = async (req, res) => {
   try {
     await User.delete({
       where: { id: parseInt(req.user.user.id) }
-    });
-    // On supprime tous les posts créés par ce compte
-    await Post.deleteMany({
-      where: { author: req.user.user.id }
-    });
-    // On supprime toutes les réactions créées par ce compte
-    await Reaction.deleteMany({
-      where: { author: req.user.user.id }
     });
     resp.success("Votre compte a été supprimé avec succès", res);
   } catch (error) {

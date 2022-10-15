@@ -24,7 +24,6 @@ exports.status = async (req, res) => {
         timeZone: "Europe/Paris",
       }),
     },
-    stats: { postsCount, usersCount, reactionsCount },
-    authors
+    stats: { postsCount, usersCount, reactionsCount }
   })
 }

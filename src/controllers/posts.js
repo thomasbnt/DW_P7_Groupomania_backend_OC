@@ -19,11 +19,11 @@ exports.PostsCreateOne = async (req, res) => {
     let newPost
     // Le post et l'alt text pas plus de 500 caractères
     if (text.length > 500) return resp.badRequest("Le contenu du post ne doit pas dépasser 500 caractères", res)
-    if (altText.length > 500) return resp.badRequest("Le contenu de l'alt text ne doit pas dépasser 500 caractères", res)
     if (imageIsHere) {
       if (!altTextIsValid) {
         return resp.badRequest( "Le texte alternatif de l'image n'est pas valide", res)
       }
+      if (altText.length > 500) return resp.badRequest("Le contenu de l'alt text ne doit pas dépasser 500 caractères", res)
       // On crée le post avec l'image
       newPost = await Post.create({
         data: {
@@ -63,13 +63,13 @@ exports.PostsGetAll = async (req, res) => {
     const posts = await Post.findMany({
       // On affiche les informations d'userId sauf les mots de passe
       include: {
+        reactions: true,
         author: {
           select: {
             id: true,
             firstName: true,
             lastName: true,
             imageProfile: true,
-            reactions: true,
           },
         },
       },
@@ -98,13 +98,13 @@ exports.PostsGetOne = async (req, res) => {
       where: { id: id },
       // On affiche les informations d'userId sauf les mots de passe
       include: {
+        reactions: true,
         author: {
           select: {
             id: true,
             firstName: true,
             lastName: true,
             imageProfile: true,
-            reactions: true,
           },
         },
       },
@@ -223,12 +223,13 @@ exports.PostsDeleteOne = async (req, res) => {
       userId: true,
     },
   })
-  if (post.userId !== req.user.user.id) return resp.forbidden("Vous n'êtes pas l'auteur du post", res)
+  if ((post.userId !== req.user.user.id) && req.user.user.role !== 'ADMIN') return resp.forbidden("Vous n'êtes pas l'auteur du post", res)
   // On supprime le post
   try {
     await Post.delete({ where: { id: id } })
     res.status(200).json({ message: "Le post a bien été supprimé" })
   } catch (error) {
+    console.log(error);
     resp.internalError("Une erreur est survenue", res)
   }
 }
