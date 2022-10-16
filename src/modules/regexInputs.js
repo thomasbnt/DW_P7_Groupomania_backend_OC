@@ -9,7 +9,7 @@ class RegexInputs {
   checkPassword(password) {
     if (password === undefined || password === "") return false
     // Simple système de Regex pour vérifier le mot de passe.
-    // Min 9 caractères, une lettre en majuscule, un caractère spécial et un chiffre.
+    // Min 8 caractères, une lettre en majuscule, un caractère spécial et un chiffre.
     const regPassword = new RegExp("^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$ %^&*-]).{8,}$")
     return regPassword.test(password)
   }
