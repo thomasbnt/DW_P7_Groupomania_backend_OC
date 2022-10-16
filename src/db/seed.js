@@ -11,7 +11,7 @@ async function main() {
       lastName: "local",
       email: "admin@ndd.local",
       password: await hash.gen('password'),
-      imageProfile: "",
+      imageProfile: "src/assets/img/no_user.png",
       role: "ADMIN",
     },
   })
